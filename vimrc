@@ -8,10 +8,15 @@ call pathogen#helptags()
 call pathogen#runtime_append_all_bundles()
 
 """ Display
+" syntax 
+syntax enable
+"""syntax sync fromstart
 set bg=dark
+
 let g:zenburn_high_Contrast = 1
 let g:molokai_original = 1
 set t_Co=256
+"""colorscheme solarized
 colorscheme molokai
 
 if has("gui_running")
@@ -31,6 +36,7 @@ let mapleader = ","
 
 "store lots of :cmdline history
 set history=1000
+set ttyfast
 
 "allow backspacing over everything in insert mode
 set backspace=indent,eol,start
@@ -40,7 +46,6 @@ set shiftwidth=2 " soft space = 2
 set smarttab
 set expandtab " expand tabs
 set wildchar=9 " tab as completion character
-set undofile
 set clipboard+=unnamed  " Yanks go on clipboard instead.
 set showmatch " Show matching braces.
 
@@ -94,12 +99,9 @@ set textwidth=79
 set formatoptions=qrn1
 
 """ SpellChecker
-set spelllang=en,es,de,eo
-set dictionary+=/usr/share/dict/american-english
+"set spelllang=en,es,de,eo
+"set dictionary+=/usr/share/dict/american-english
 
-" syntax 
-syntax enable
-syntax sync fromstart
 " it needs to be after pathogen
 filetype on
 filetype plugin on
@@ -207,6 +209,9 @@ nmap <silent> <C-n> <Esc>:call ToggleHLSearch()<CR>
 noremap <C-E><C-E> :NERDTree<CR>
 noremap <C-E><C-C> :NERDTreeClose<CR>
 
+"" Gundo
+nnoremap <F5> :GundoToggle<CR>
+
 "" Rebuild ctags - python specific
 map ,r <Esc>:!(ctags -R -f ~/.vim/tags/python.ctags /usr/lib/python2.5/)<CR>
 
@@ -223,6 +228,9 @@ autocmd FileType python set makeprg=python\ -c\ \"import\ py_compile,sys;\ sys.s
 autocmd FileType python set ft=python.django " For SnipMate
 autocmd FileType html set ft=htmldjango.html " For SnipMate
 autocmd FileType python set efm=%C\ %.%#,%A\ \ File\ \"%f\"\\,\ line\ %l%.%#,%Z%[%^\ ]%\\@=%m
+
+let g:pydiction_location='~/.vim/tags/complete-dict'
+
 autocmd BufRead *.py nmap <F5> :!python %<cr>
 autocmd BufRead *.py set tabstop=4
 autocmd BufRead *.py set shiftwidth=4
