@@ -28,3 +28,33 @@
 [submodule "bundle/obviousmode"]
 	path = bundle/obviousmode
 	url = https://github.com/vim-scripts/Obvious-Mode.git
+[submodule "bundle/matchit"]
+	path = bundle/matchit
+	url = https://github.com/vim-scripts/matchit.zip.git
+[submodule "bundle/ragtag"]
+	path = bundle/ragtag
+	url = https://github.com/tpope/vim-ragtag.git
+[submodule "bundle/pydoc"]
+	path = bundle/pydoc
+	url = https://github.com/fs111/pydoc.vim.git
+[submodule "bundle/pydiction"]
+	path = bundle/pydiction
+	url = https://github.com/vim-scripts/Pydiction.git
+[submodule "bundle/vim-surround"]
+	path = bundle/vim-surround
+	url = https://github.com/tpope/vim-surround.git
+[submodule "bundle/vi-colors-solarized"]
+	path = bundle/vi-colors-solarized
+	url = https://github.com/altercation/vim-colors-solarized.git
+[submodule "bundle/rainbow-parenthesis"]
+	path = bundle/rainbow-parenthesis
+	url = https://github.com/vim-scripts/Rainbow-Parenthesis.git
+[submodule "bundle/vim-pyflakes"]
+	path = bundle/vim-pyflakes
+	url = https://github.com/kevinw/pyflakes-vim.git
+[submodule "bundle/gundo"]
+	path = bundle/gundo
+	url = http://github.com/sjl/gundo.vim.git
+[submodule "bundle/command-t"]
+	path = bundle/command-t
+	url = git://git.wincent.com/command-t.git
