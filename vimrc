@@ -42,15 +42,18 @@ set ttyfast
 "allow backspacing over everything in insert mode
 set backspace=indent,eol,start
 set modeline
-set tabstop=2 " tab size = 2
-set shiftwidth=2 " soft space = 2
-set smarttab
+
 set expandtab " expand tabs
+set textwidth=79
+set tabstop=8 " tab size = 8
+set softtabstop=4
+set shiftwidth=4 " soft space = 2
+set autoindent
+set smarttab
 set wildchar=9 " tab as completion character
 set clipboard+=unnamed  " Yanks go on clipboard instead.
 set showmatch " Show matching braces.
 
-set autoindent
 set showmode
 set showcmd
 set hidden
@@ -76,8 +79,8 @@ set novisualbell
 set t_vb=
 
 set scrolloff=3   " Keep 3 lines below and above the cursor
-set report=0	"Notify me whenever any lines have changed
-set confirm	
+set report=0 "Notify me whenever any lines have changed
+set confirm 
 
 set laststatus=2
 set cursorline
@@ -95,7 +98,6 @@ set listchars=tab:▸\ ,eol:¬
 " Line wrapping on by default
 set wrap
 set linebreak
-set textwidth=79
 set formatoptions=qrn1
 
 """ SpellChecker

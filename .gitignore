@@ -1,0 +1,8 @@
+tags
+*~
+*.swp
+yankring_history_v2.txt
+.VimballRecord
+undofiles/*
+projects/*
+

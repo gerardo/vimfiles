@@ -61,3 +61,7 @@
 [submodule "bundle/vim-fugitive"]
 	path = bundle/vim-fugitive
 	url = https://github.com/tpope/vim-fugitive.git
+[submodule "bundle/vim-pep8"]
+	path = bundle/vim-pep8
+	url = https://github.com/nvie/vim-pep8.git
+
