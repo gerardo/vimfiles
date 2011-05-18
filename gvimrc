@@ -7,6 +7,8 @@ set lines=60 columns=75
 set t_Co=256
 set background=dark
 
+let g:obviousModeInsertHi = "guibg=Black guifg=White"
+
 if has("unix")
   let s:uname = system("echo -n \"$(uname)\"")
   if !v:shell_error && s:uname == "Linux"

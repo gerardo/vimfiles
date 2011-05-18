@@ -20,17 +20,7 @@ set t_Co=256
 let g:solarized_termcolors=256 
 colorscheme solarized
 
-if has("gui_running")
-   " set default size: 90x35
-   set columns=90
-   set lines=35
-   " No menus and no toolbar
-   set guioptions-=m
-   set guioptions-=T
-   let g:obviousModeInsertHi = "guibg=Black guifg=White"
-else
-   let g:obviousModeInsertHi = "ctermfg=253 ctermbg=16"
-endif
+let g:obviousModeInsertHi = "ctermfg=253 ctermbg=16"
 
 " mapleader
 let mapleader = ","
@@ -209,28 +199,75 @@ noremap <C-E><C-C> :NERDTreeClose<CR>
 "" Gundo
 nnoremap <F5> :GundoToggle<CR>
 
+"" Functions
+function LoadDjangoGoodies()
+
+        " Django customization
+        " it only works if you are at base of django site
+        if filewritable('settings.py')
+                " set DJANGO_SETTINGS_MODULE
+                let $DJANGO_SETTINGS_MODULE=split( getcwd(),'/')[-1].".settings"
+                " Set python path on enviroment, vim and python
+                let $PYTHONPATH .= ":/".join(split( getcwd(),'/')[0:-2],'/')."/:/".join(split( getcwd(),'/')[0:-1],'/')."/"
+                exec "set path+='/".join(split( getcwd(),'/')[0:-2],'/')."/,/".join(split( getcwd(),'/')[0:-1],'/')."/'"
+                python import os,sys,vim
+                exec "python sys.path.insert(0,'/".join(split( getcwd(),'/')[0:-2],'/')."')"
+                exec "python sys.path.insert(0,'/".join(split( getcwd(),'/')[0:-1],'/')."')"
+        endif
+endfunction
+
+" Python customization {
+function LoadPythonGoodies()
+
+        if &ft=="python.django"||&ft=="htmldjango.html"
+            call LoadDjangoGoodies()
+
+            " set python path to vim
+        python << EOF
+import os, sys, vim
+
+for p in sys.path:
+    if os.path.isdir(p):
+        vim.command(r"set path+=%s" % (p.replace(" ", r"\ ")))
+EOF
+
+                " some nice adjustaments to show errors
+            let python_highlight_builtins = 1
+            let python_highlight_exceptions = 1
+            let python_highlight_string_formatting = 1
+            let python_highlight_string_format = 1
+            let python_highlight_string_templates = 1
+            let python_highlight_indent_errors = 1
+            let python_highlight_space_errors = 1
+            let python_highlight_doctests = 1
+        endif
+endfunction
+
 
 """ python-specific settings
+
+au BufNewFile,BufRead *.py,*.html call LoadPythonGoodies()
+
 autocmd FileType python set ft=python.django " For SnipMate
 autocmd FileType html set ft=htmldjango.html " For SnipMate
 autocmd FileType python set efm=%C\ %.%#,%A\ \ File\ \"%f\"\\,\ line\ %l%.%#,%Z%[%^\ ]%\\@=%m
 
-let g:pydiction_location='~/.vim/tags/complete-dict'
-
 autocmd FileType python,perl,java,c,ant,sh,conf,cpp,css,haskell,htmldjango,html,javascript,lisp,vim,xml,yaml Tlist
 
-" language specific customizations:
-let g:python_highlight_numbers = 1
+
+" Plugins configuration
+
+let g:pydiction_location='~/.vim/tags/complete-dict'
 
 " Load snipMate support functions
 source ~/.vim/snippets/support_functions.vim
 
-" Plugins configuration
-" Yankring 
-let g:yankring_history_dir = '~/.vim/'
-let g:snippets_dir="~/.vim/snippets/,~/.vim/more_snippets/"
 " Snipmate dirs
 let g:snippets_dir="~/.vim/snippets/,~/.vim/more_snippets/"
+
+" Yankring 
+let g:yankring_history_dir = '~/.vim/'
+
 
 """ Abbr
 iabbr _me Gerardo Curiel <gerardo@gerardo.cc><CR>
