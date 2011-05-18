@@ -10,14 +10,15 @@ call pathogen#runtime_append_all_bundles()
 """ Display
 " syntax 
 syntax enable
-"""syntax sync fromstart
-set bg=dark
 
-let g:zenburn_high_Contrast = 1
-let g:molokai_original = 1
+set bg=dark
 set t_Co=256
-"""colorscheme solarized
-colorscheme molokai
+
+" colorscheme molokai
+" let g:molokai_original = 1
+
+let g:solarized_termcolors=256 
+colorscheme solarized
 
 if has("gui_running")
    " set default size: 90x35
@@ -56,7 +57,6 @@ set hidden
 set wildmenu
 set wildmode=list:longest
 set cursorline
-set ttyfast
 set laststatus=2
 set showfulltag
 set autoread
@@ -86,7 +86,7 @@ set number
 hi LineNr ctermfg=blue guifg=blue
 
 """ Informational status line
-set statusline=%F%m%r%h%w\ [format=%{&ff}]\ [type=%Y]\ [pos=%04l,%04v][%p%%]\ [lines=%L]
+set statusline=%F%m%r%h%w\ [format=%{&ff}]\ [type=%Y]\ [pos=%04l,%04v][%p%%][lns=%L]\ %{fugitive#statusline()}
 
 " Show invisible chars
 set list
@@ -127,12 +127,8 @@ vnoremap <tab> %
 set wildignore=*.o,*.obj,*.bak,*.exe,*.pyc,*.swp
 
 """ Folding
-set foldmethod=syntax	" By default, use syntax to determine folds
-set foldlevelstart=99	" All folds open by default
-
-"CTags
-set tags+=$HOME/.vim/tags/python.ctags
-autocmd FileType python set omnifunc=pythoncomplete#Complete
+set foldmethod=syntax " By default, use syntax to determine folds
+set foldlevelstart=99 " All folds open by default
 
 " Keyboard
 " forcing hjkl to move 
@@ -157,7 +153,6 @@ nnoremap  <s-right>  vl
 nnoremap  <s-left>   vh
 
 """ Maps
-
 " YankRing
 
 nnoremap <silent> <F4> :YRShow<cr>
@@ -212,31 +207,14 @@ noremap <C-E><C-C> :NERDTreeClose<CR>
 "" Gundo
 nnoremap <F5> :GundoToggle<CR>
 
-"" Rebuild ctags - python specific
-map ,r <Esc>:!(ctags -R -f ~/.vim/tags/python.ctags /usr/lib/python2.5/)<CR>
-
-function ToggleHLSearch()
-       IF &hls
-            set nohls
-       else
-            set hls
-       endif
-endfunction
 
 """ python-specific settings
-autocmd FileType python set makeprg=python\ -c\ \"import\ py_compile,sys;\ sys.stderr=sys.stdout;\ py_compile.compile(r'%')\"
 autocmd FileType python set ft=python.django " For SnipMate
 autocmd FileType html set ft=htmldjango.html " For SnipMate
 autocmd FileType python set efm=%C\ %.%#,%A\ \ File\ \"%f\"\\,\ line\ %l%.%#,%Z%[%^\ ]%\\@=%m
 
 let g:pydiction_location='~/.vim/tags/complete-dict'
 
-autocmd BufRead *.py nmap <F5> :!python %<cr>
-autocmd BufRead *.py set tabstop=4
-autocmd BufRead *.py set shiftwidth=4
-autocmd BufRead *.py set expandtab
-autocmd BufRead *.py set nowrap
-autocmd BufRead *.py set go+=b
 autocmd FileType python,perl,java,c,ant,sh,conf,cpp,css,haskell,htmldjango,html,javascript,lisp,vim,xml,yaml Tlist
 
 " language specific customizations:
