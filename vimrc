@@ -144,9 +144,7 @@ nnoremap  <s-down>   Vj
 nnoremap  <s-right>  vl
 nnoremap  <s-left>   vh
 
-""" Maps
 " YankRing
-
 nnoremap <silent> <F4> :YRShow<cr>
 inoremap <silent> <F4> <ESC>:YRShow<cr>
 
@@ -157,11 +155,6 @@ nnoremap <C-j> <C-w>j
 nnoremap <C-k> <C-w>k
 nnoremap <C-l> <C-w>l
 
-" disable F1 help
-inoremap <F1> <ESC>
-nnoremap <F1> <ESC>
-vnoremap <F1> <ESC>
-
 "" Switch between methods
 map <silent><C-Left> <C-T>
 map <silent><C-Right> <C-]>
@@ -169,25 +162,8 @@ map <silent><C-Right> <C-]>
 """ Ctrl+Space autocompletion
 inoremap <Nul> <C-x><C-o>
 
-" Map Ctrl-E Ctrl-W to toggle linewrap option like in VS
-noremap <C-E><C-W> :set wrap!<CR>
-" " Map Ctrl-M Ctrl-L to expand all folds like in VS
-noremap <C-M><C-L> :%foldopen!<CR>
-
-""" Firefox-like tabs
-nmap <C-S-tab> :tabprevious<cr>
-nmap <C-tab> :tabnext<cr>
-imap <C-S-tab> <ESC>:tabprevious<cr>i
-imap <C-tab> <ESC>:tabnext<cr>i
-nmap <C-t> :tabnew<cr>
-imap <C-t> <ESC>:tabnew<cr>i
-
 """ Toggle taglist
 nmap <F3> :TlistToggle<cr>
-
-""" Disable/enable syntax highlight
-map  ,S   <Esc>:syn off<CR>
-map  ,s   <Esc>:syn on<CR>
 
 """ Toggle highlight search
 nmap <silent> <C-n> <Esc>:call ToggleHLSearch()<CR>
@@ -199,39 +175,39 @@ noremap <C-E><C-C> :NERDTreeClose<CR>
 "" Gundo
 nnoremap <F5> :GundoToggle<CR>
 
+" Misc
+""" Disable/enable syntax highlight
+map  ,S   <Esc>:syn off<CR>
+map  ,s   <Esc>:syn on<CR>
+
+" disable F1 help
+inoremap <F1> <ESC>
+nnoremap <F1> <ESC>
+vnoremap <F1> <ESC>
+
+" Map Ctrl-E Ctrl-W to toggle linewrap option like in VS
+noremap <C-E><C-W> :set wrap!<CR>
+" " Map Ctrl-M Ctrl-L to expand all folds like in VS
+noremap <C-M><C-L> :%foldopen!<CR>
+
 "" Functions
-function LoadDjangoGoodies()
-
-        " Django customization
-        " it only works if you are at base of django site
-        if filewritable('settings.py')
-                " set DJANGO_SETTINGS_MODULE
-                let $DJANGO_SETTINGS_MODULE=split( getcwd(),'/')[-1].".settings"
-                " Set python path on enviroment, vim and python
-                let $PYTHONPATH .= ":/".join(split( getcwd(),'/')[0:-2],'/')."/:/".join(split( getcwd(),'/')[0:-1],'/')."/"
-                exec "set path+='/".join(split( getcwd(),'/')[0:-2],'/')."/,/".join(split( getcwd(),'/')[0:-1],'/')."/'"
-                python import os,sys,vim
-                exec "python sys.path.insert(0,'/".join(split( getcwd(),'/')[0:-2],'/')."')"
-                exec "python sys.path.insert(0,'/".join(split( getcwd(),'/')[0:-1],'/')."')"
-        endif
-endfunction
-
-" Python customization {
+" Python customization 
 function LoadPythonGoodies()
 
-        if &ft=="python.django"||&ft=="htmldjango.html"
-            call LoadDjangoGoodies()
+        let $PYTHONPATH .= ":/".join(split( getcwd(),'/')[0:-2],'/')."/:/".join(split( getcwd(),'/')[0:-1],'/')."/"
+        exec "set path+='/".join(split( getcwd(),'/')[0:-2],'/')."/,/".join(split( getcwd(),'/')[0:-1],'/')."/'"
+        python import os,sys,vim
+        exec "python sys.path.insert(0,'/".join(split( getcwd(),'/')[0:-2],'/')."')"
+        exec "python sys.path.insert(0,'/".join(split( getcwd(),'/')[0:-1],'/')."')"
 
-            " set python path to vim
+        " set python path to vim's search path
         python << EOF
 import os, sys, vim
-
 for p in sys.path:
     if os.path.isdir(p):
         vim.command(r"set path+=%s" % (p.replace(" ", r"\ ")))
 EOF
-
-                " some nice adjustaments to show errors
+            " some nice adjustaments to show errors
             let python_highlight_builtins = 1
             let python_highlight_exceptions = 1
             let python_highlight_string_formatting = 1
@@ -240,14 +216,12 @@ EOF
             let python_highlight_indent_errors = 1
             let python_highlight_space_errors = 1
             let python_highlight_doctests = 1
-        endif
 endfunction
 
 
 """ python-specific settings
 
-au BufNewFile,BufRead *.py,*.html call LoadPythonGoodies()
-
+au BufNewFile,BufRead *.py call LoadPythonGoodies()
 autocmd FileType python set ft=python.django " For SnipMate
 autocmd FileType html set ft=htmldjango.html " For SnipMate
 autocmd FileType python set efm=%C\ %.%#,%A\ \ File\ \"%f\"\\,\ line\ %l%.%#,%Z%[%^\ ]%\\@=%m
@@ -268,6 +242,15 @@ let g:snippets_dir="~/.vim/snippets/,~/.vim/more_snippets/"
 " Yankring 
 let g:yankring_history_dir = '~/.vim/'
 
+" minibufexpl
+let g:miniBufExplMapWindowNavVim = 1
+let g:miniBufExplMapWindowNavArrows = 1
+let g:miniBufExplMapCTabSwitchBufs = 1
+let g:miniBufExplModSelTarget = 1
+
+" Supertab
+
+let g:SuperTabDefaultCompletionType = "context"
 
 """ Abbr
 iabbr _me Gerardo Curiel <gerardo@gerardo.cc><CR>

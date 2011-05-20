@@ -37,9 +37,6 @@
 [submodule "bundle/pydoc"]
 	path = bundle/pydoc
 	url = https://github.com/fs111/pydoc.vim.git
-[submodule "bundle/pydiction"]
-	path = bundle/pydiction
-	url = https://github.com/vim-scripts/Pydiction.git
 [submodule "bundle/vim-surround"]
 	path = bundle/vim-surround
 	url = https://github.com/tpope/vim-surround.git
@@ -64,4 +61,12 @@
 [submodule "bundle/vim-pep8"]
 	path = bundle/vim-pep8
 	url = https://github.com/nvie/vim-pep8.git
-
+[submodule "bundle/minibufexpl"]
+	path = bundle/minibufexpl
+	url = https://github.com/fholgado/minibufexpl.vim.git
+[submodule "bundle/pydiction"]
+	path = bundle/pydiction
+	url = git@github.com:gcuriel/Pydiction.git
+[submodule "bundle/supertab"]
+	path = bundle/supertab
+	url = https://github.com/ervandew/supertab.git
