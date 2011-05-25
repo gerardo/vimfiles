@@ -2,6 +2,8 @@
 
 **I'm [@gerard0]**, and this is my ~/.vim directory.
 
+[@gerard0]: http://twitter.com/gerard0
+
 ## Installation
 
     git clone git://github.com/gcuriel/vimfiles.git ~/.vim
