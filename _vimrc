@@ -236,9 +236,6 @@ let g:pydiction_location='~/.vim/tags/complete-dict'
 " Load snipMate support functions
 source ~/.vim/snippets/support_functions.vim
 
-" Snipmate dirs
-let g:snippets_dir="~/.vim/snippets/,~/.vim/more_snippets/"
-
 " Yankring 
 let g:yankring_history_dir = '~/.vim/'
 

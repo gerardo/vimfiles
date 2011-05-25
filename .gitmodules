@@ -40,9 +40,6 @@
 [submodule "bundle/vim-surround"]
 	path = bundle/vim-surround
 	url = https://github.com/tpope/vim-surround.git
-[submodule "bundle/vi-colors-solarized"]
-	path = bundle/vi-colors-solarized
-	url = https://github.com/altercation/vim-colors-solarized.git
 [submodule "bundle/rainbow-parenthesis"]
 	path = bundle/rainbow-parenthesis
 	url = https://github.com/vim-scripts/Rainbow-Parenthesis.git
