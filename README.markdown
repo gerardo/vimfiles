@@ -1,4 +1,8 @@
-Installation:
+# Gerardo Curiel Vimfiles
+
+**I'm [@gerard0]**, and this is my ~/.vim directory.
+
+## Installation
 
     git clone git://github.com/gcuriel/vimfiles.git ~/.vim
 
@@ -12,3 +16,12 @@ Switch to the `~/.vim` directory, and fetch submodules:
     cd ~/.vim
     git submodule init
     git submodule update
+
+You will need to compile the ruby extension for command-t
+
+    cd ~/.vim/bundle/command-t
+    rake make
+
+## Features
+
+More information to come. 
