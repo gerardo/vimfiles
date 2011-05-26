@@ -2,6 +2,7 @@ set guioptions=em
 set guioptions-=m  "remove menu bar
 set guioptions-=T  "remove toolbar
 set guioptions-=r  "remove right-hand scroll barset showtabline=2
+set guioptions=aAce
 
 set lines=60 columns=75
 set t_Co=256
@@ -19,6 +20,7 @@ if has("unix")
     " OSX-specific settings
      colorscheme solarized
      set guifont=Menlo\ Regular:h11
+     set transparency=4
  endif
 endif
 
