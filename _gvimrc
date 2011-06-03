@@ -20,7 +20,9 @@ if has("unix")
     " OSX-specific settings
      colorscheme solarized
      set guifont=Menlo\ Regular:h11
-     set transparency=4
+     set transparency=0
+     " We don't want to use the ctags command shipped by OS X 
+     let Tlist_Ctags_Cmd = '/usr/local/bin/ctags'
  endif
 endif
 
