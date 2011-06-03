@@ -15,10 +15,10 @@
 	url = https://github.com/msanders/snipmate.vim.git
 [submodule "bundle/taglist"]
 	path = bundle/taglist
-	url = https://github.com/vim-scripts/taglist.vim.git
+	url = https://github.com/gerardo/taglist.vim.git
 [submodule "snippets"]
 	path = snippets
-	url = https://github.com/gcuriel/snipmate-snippets.git
+	url = https://github.com/gerardo/snipmate-snippets.git
 [submodule "bundle/nerdcommenter"]
 	path = bundle/nerdcommenter
 	url = https://github.com/scrooloose/nerdcommenter.git
@@ -63,7 +63,7 @@
 	url = https://github.com/fholgado/minibufexpl.vim.git
 [submodule "bundle/pydiction"]
 	path = bundle/pydiction
-	url = git@github.com:gcuriel/Pydiction.git
+	url = git@github.com:gerardo/Pydiction.git
 [submodule "bundle/supertab"]
 	path = bundle/supertab
 	url = https://github.com/ervandew/supertab.git
