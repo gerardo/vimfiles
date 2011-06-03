@@ -63,7 +63,7 @@
 	url = https://github.com/fholgado/minibufexpl.vim.git
 [submodule "bundle/pydiction"]
 	path = bundle/pydiction
-	url = git@github.com:gerardo/Pydiction.git
+	url =  https://github.com/gerardo/Pydiction.git
 [submodule "bundle/supertab"]
 	path = bundle/supertab
 	url = https://github.com/ervandew/supertab.git
