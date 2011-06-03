@@ -166,7 +166,7 @@ vmap <C-v> c<ESC>"+p
 imap <C-v> <ESC>"+pa
 
 """ Ctrl+Space autocompletion
-inoremap <Nul> <C-x><C-o>
+imap <c-space> <c-x><c-o>
 
 """ Toggle taglist
 nmap <F3> :TlistToggle<cr>
@@ -232,8 +232,11 @@ autocmd FileType python set ft=python.django " For SnipMate
 autocmd FileType html set ft=htmldjango.html " For SnipMate
 autocmd FileType python set efm=%C\ %.%#,%A\ \ File\ \"%f\"\\,\ line\ %l%.%#,%Z%[%^\ ]%\\@=%m
 
+" TagList
 autocmd FileType python,perl,java,c,ant,sh,conf,cpp,css,haskell,htmldjango,html,javascript,lisp,vim,xml,yaml Tlist
 
+" Close everything
+let Tlist_Exit_OnlyWindow = 1
 
 " Plugins configuration
 
