@@ -15,10 +15,10 @@
 	url = https://github.com/msanders/snipmate.vim.git
 [submodule "bundle/taglist"]
 	path = bundle/taglist
-	url = https://github.com/vim-scripts/taglist.vim.git
+	url = https://github.com/gerardo/taglist.vim.git
 [submodule "snippets"]
 	path = snippets
-	url = https://github.com/gcuriel/snipmate-snippets.git
+	url = https://github.com/gerardo/snipmate-snippets.git
 [submodule "bundle/nerdcommenter"]
 	path = bundle/nerdcommenter
 	url = https://github.com/scrooloose/nerdcommenter.git
@@ -48,7 +48,7 @@
 	url = https://github.com/kevinw/pyflakes-vim.git
 [submodule "bundle/gundo"]
 	path = bundle/gundo
-	url = http://github.com/sjl/gundo.vim.git
+	url = https://github.com/sjl/gundo.vim.git
 [submodule "bundle/command-t"]
 	path = bundle/command-t
 	url = https://github.com/wincent/Command-T.git
@@ -63,13 +63,13 @@
 	url = https://github.com/fholgado/minibufexpl.vim.git
 [submodule "bundle/pydiction"]
 	path = bundle/pydiction
-	url = git@github.com:gcuriel/Pydiction.git
+        url = https://github.com/gerardo/Pydiction.git
 [submodule "bundle/supertab"]
 	path = bundle/supertab
 	url = https://github.com/ervandew/supertab.git
 [submodule "bundle/vim-solarized"]
 	path = bundle/vim-solarized
-	url = git://github.com/altercation/vim-colors-solarized.git
+	url = https://github.com/altercation/vim-colors-solarized.git
 [submodule "bundle/vim-peepopen"]
 	path = bundle/vim-peepopen
 	url = https://github.com/shemerey/vim-peepopen.git
