@@ -159,12 +159,6 @@ nnoremap <C-l> <C-w>l
 map <silent><C-Left> <C-T>
 map <silent><C-Right> <C-]>
 
-"" Sane copy-paste for gVim
-vmap <C-c> "+yi
-vmap <C-x> "+c
-vmap <C-v> c<ESC>"+p
-imap <C-v> <ESC>"+pa
-
 """ Ctrl+Space autocompletion
 imap <c-space> <c-x><c-o>
 

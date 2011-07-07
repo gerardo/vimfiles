@@ -16,6 +16,11 @@ if has("unix")
      " Linux-specific settings
      colorscheme molokai  
      set guifont=Inconsolata\ Medium\ 10
+     "" Sane copy-paste for gVim
+     vmap <C-c> "+yi
+     vmap <C-x> "+c
+     vmap <C-v> c<ESC>"+p
+     imap <C-v> <ESC>"+pa
   else
     " OSX-specific settings
      colorscheme solarized
