@@ -1,13 +1,20 @@
-""" Gerardo Curiel <gerardo@gerardo.cc>
+"" Main Vim/MacVim configuration
+""
+"" Gerardo Curiel <gerardo@gerardo.cc>
 
+" remove compatibility with vi
 set nocompatible
 
-" activate Pathogen module manage
+" activate pathogen module manage
 filetype off 
 call pathogen#helptags()
 call pathogen#runtime_append_all_bundles()
 
-""" Display
+filetype on
+filetype plugin on
+filetype plugin indent on
+
+""" display
 " syntax 
 syntax enable
 
@@ -33,14 +40,14 @@ set ttyfast
 set backspace=indent,eol,start
 set modeline
 
-set expandtab " expand tabs
+set expandtab 
 set textwidth=79
 set tabstop=8 " tab size = 8
 set softtabstop=4
-set shiftwidth=4 " soft space = 2
+set shiftwidth=4
 set autoindent
 set smarttab
-set wildchar=9 " tab as completion character
+set wildchar=9
 set clipboard+=unnamed  " Yanks go on clipboard instead.
 set showmatch " Show matching braces.
 
@@ -68,7 +75,7 @@ set noerrorbells
 set novisualbell
 set t_vb=
 
-set scrolloff=3   " Keep 3 lines below and above the cursor
+set scrolloff=3  " Keep 3 lines below and above the cursor
 set report=0 "Notify me whenever any lines have changed
 set confirm 
 
@@ -80,24 +87,26 @@ hi LineNr ctermfg=blue guifg=blue
 
 """ Informational status line
 set statusline=%F%m%r%h%w\ [format=%{&ff}]\ [type=%Y]\ [pos=%04l,%04v][%p%%][lns=%L]\ %{fugitive#statusline()}
+" Syntastic on status line
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
 
 " Show invisible chars
 set list
-set listchars=tab:▸\ ,eol:¬
+set listchars=tab:▸\ ,trail:¬
 
 " Line wrapping on by default
 set wrap
 set linebreak
 set formatoptions=qrn1
 
-""" SpellChecker
-"set spelllang=en,es,de,eo
-"set dictionary+=/usr/share/dict/american-english
+""" Editing
+set wildignore=*.o,*.obj,*.bak,*.exe,*.pyc,*.swp
 
-" it needs to be after pathogen
-filetype on
-filetype plugin on
-filetype plugin indent on
+""" Folding
+set foldmethod=syntax " By default, use syntax to determine folds
+set foldlevelstart=99 " All folds open by default
 
 """ Searching and Patterns
 nnoremap / /\v
@@ -112,17 +121,13 @@ set showmatch
 
 " Stop search highlight
 nnoremap <leader><space> :noh<cr>
+
+"""" Keyboard shortcuts
+
+" Use Tab to match opening/closing brackets
 nnoremap <tab> %
 vnoremap <tab> %
 
-""" Editing
-set wildignore=*.o,*.obj,*.bak,*.exe,*.pyc,*.swp
-
-""" Folding
-set foldmethod=syntax " By default, use syntax to determine folds
-set foldlevelstart=99 " All folds open by default
-
-" Keyboard
 " forcing hjkl to move 
 nnoremap <up> <nop>
 nnoremap <down> <nop>
@@ -135,18 +140,9 @@ inoremap <right> <nop>
 nnoremap j gj
 nnoremap k gk
 
+" Exit from Insert mode
 inoremap jj <ESC>
 nnoremap ; :
-
-"" Shift + Arrows - Visually Select text
-nnoremap  <s-up>     Vk
-nnoremap  <s-down>   Vj
-nnoremap  <s-right>  vl
-nnoremap  <s-left>   vh
-
-" YankRing
-nnoremap <silent> <F4> :YRShow<cr>
-inoremap <silent> <F4> <ESC>:YRShow<cr>
 
 "" Split windows 
 nnoremap <leader>w <C-w>v<C-w>l
@@ -155,40 +151,41 @@ nnoremap <C-j> <C-w>j
 nnoremap <C-k> <C-w>k
 nnoremap <C-l> <C-w>l
 
-"" Switch between methods
-map <silent><C-Left> <C-T>
-map <silent><C-Right> <C-]>
-
 """ Ctrl+Space autocompletion
 imap <c-space> <c-x><c-o>
-
-""" Toggle taglist
-nmap <F3> :TlistToggle<cr>
-
-""" Toggle highlight search
-nmap <silent> <C-n> <Esc>:call ToggleHLSearch()<CR>
-
-"" Bind NERD_Tree plugin to a <Ctrl+E,Ctrl+E>
-noremap <C-E><C-E> :NERDTree<CR>
-noremap <C-E><C-C> :NERDTreeClose<CR>
-
-"" Gundo
-nnoremap <F5> :GundoToggle<CR>
-
-" Misc
-""" Disable/enable syntax highlight
-map  ,S   <Esc>:syn off<CR>
-map  ,s   <Esc>:syn on<CR>
 
 " disable F1 help
 inoremap <F1> <ESC>
 nnoremap <F1> <ESC>
 vnoremap <F1> <ESC>
 
-" Map Ctrl-E Ctrl-W to toggle linewrap option like in VS
-noremap <C-E><C-W> :set wrap!<CR>
-" " Map Ctrl-M Ctrl-L to expand all folds like in VS
-noremap <C-M><C-L> :%foldopen!<CR>
+""" Toggle taglist
+nmap <F3> :TlistToggle<cr>
+
+" YankRing
+nnoremap <silent> <F4> :YRShow<cr>
+inoremap <silent> <F4> <ESC>:YRShow<cr>
+
+"" Gundo
+nnoremap <F5> :GundoToggle<CR>
+
+"" Bind NERD_Tree plugin to a <Ctrl+E,Ctrl+E>
+noremap <C-E><C-E> :NERDTree<CR>
+
+""" Disable/enable syntax highlight
+map  ,S   <Esc>:syn off<CR>
+map  ,s   <Esc>:syn on<CR>
+
+" Refactoring. Rope shortcuts (IN PROGRESS)
+map <leader>j :RopeGotoDefinition<CR>
+map <leader>r :RopeRename<CR>
+
+" Easy access to the shell.
+map <Leader><Leader> :!
+
+" Access to syntastic location-list.
+map <Leader>e :Errors<CR>
+
 
 "" Functions
 " Python customization 
@@ -218,7 +215,6 @@ EOF
             let python_highlight_doctests = 1
 endfunction
 
-
 """ python-specific settings
 
 au BufNewFile,BufRead *.py call LoadPythonGoodies()
@@ -226,14 +222,23 @@ autocmd FileType python set ft=python.django " For SnipMate
 autocmd FileType html set ft=htmldjango.html " For SnipMate
 autocmd FileType python set efm=%C\ %.%#,%A\ \ File\ \"%f\"\\,\ line\ %l%.%#,%Z%[%^\ ]%\\@=%m
 
+" Highligting
+
+" Highlight JSON files as javascript
+autocmd BufRead,BufNewFile *.json set filetype=javascript
+
+" Vagrant
+au BufRead,BufNewFile Vagrantfile set filetype=ruby
+
+" Plugins configuration
+
 " TagList
 autocmd FileType python,perl,java,c,ant,sh,conf,cpp,css,haskell,htmldjango,html,javascript,lisp,vim,xml,yaml Tlist
 
 " Close everything
 let Tlist_Exit_OnlyWindow = 1
 
-" Plugins configuration
-
+" Pydiction
 let g:pydiction_location='~/.vim/tags/complete-dict'
 
 " Load snipMate support functions
@@ -242,6 +247,9 @@ source ~/.vim/snippets/support_functions.vim
 " Yankring 
 let g:yankring_history_dir = '~/.vim/'
 
+" Syntastic
+let g:syntastic_enable_signs=1
+
 " minibufexpl
 let g:miniBufExplMapWindowNavVim = 1
 let g:miniBufExplMapWindowNavArrows = 1
@@ -249,8 +257,7 @@ let g:miniBufExplMapCTabSwitchBufs = 1
 let g:miniBufExplModSelTarget = 1
 
 " Supertab
-
 let g:SuperTabDefaultCompletionType = "context"
 
-""" Abbr
-iabbr _me Gerardo Curiel <gerardo@gerardo.cc><CR>
+" Machine-local vim settings.
+silent! source ~/.vimrc.local
