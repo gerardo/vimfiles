@@ -17,14 +17,9 @@ filetype plugin indent on
 """ display
 " syntax 
 syntax enable
-
-set bg=dark
+set background=dark
 set t_Co=256
 
-" colorscheme molokai
-" let g:molokai_original = 1
-
-let g:solarized_termcolors=256 
 colorscheme solarized
 
 let g:obviousModeInsertHi = "ctermfg=253 ctermbg=16"
