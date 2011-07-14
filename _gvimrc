@@ -14,7 +14,7 @@ if has("unix")
   let s:uname = system("echo -n \"$(uname)\"")
   if !v:shell_error && s:uname == "Linux"
      " Linux-specific settings
-     colorscheme molokai  
+     colorscheme solarized
      set guifont=Inconsolata\ Medium\ 10
      "" Sane copy-paste for gVim
      vmap <C-c> "+yi
