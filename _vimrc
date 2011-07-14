@@ -17,9 +17,11 @@ filetype plugin indent on
 """ display
 " syntax 
 syntax enable
+
 set background=dark
 set t_Co=256
 
+let g:solarized_termcolors=256 
 colorscheme solarized
 
 let g:obviousModeInsertHi = "ctermfg=253 ctermbg=16"
