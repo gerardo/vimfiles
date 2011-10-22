@@ -6,7 +6,7 @@
 set nocompatible
 
 " activate pathogen module manage
-filetype off 
+filetype off
 call pathogen#helptags()
 call pathogen#runtime_append_all_bundles()
 
@@ -15,13 +15,13 @@ filetype plugin on
 filetype plugin indent on
 
 """ display
-" syntax 
+" syntax
 syntax enable
 
 set background=dark
 set t_Co=256
 
-let g:solarized_termcolors=256 
+let g:solarized_termcolors=256
 colorscheme solarized
 
 let g:obviousModeInsertHi = "ctermfg=253 ctermbg=16"
@@ -37,7 +37,7 @@ set ttyfast
 set backspace=indent,eol,start
 set modeline
 
-set expandtab 
+set expandtab
 set textwidth=79
 set tabstop=8 " tab size = 8
 set softtabstop=4
@@ -52,13 +52,12 @@ set showmode
 set showcmd
 set hidden
 set wildmenu
-set wildmode=list:longest
 set cursorline
 set laststatus=2
 set showfulltag
 set autoread
 set title
-set encoding=utf-8 
+set encoding=utf-8
 set fileencoding=utf8
 set ruler
 set pastetoggle=<F2>
@@ -74,16 +73,18 @@ set t_vb=
 
 set scrolloff=3  " Keep 3 lines below and above the cursor
 set report=0 "Notify me whenever any lines have changed
-set confirm 
+set confirm
 
 set laststatus=2
 set cursorline
 set cursorcolumn
 set number
 hi LineNr ctermfg=blue guifg=blue
+set colorcolumn=80
 
 """ Informational status line
 set statusline=%F%m%r%h%w\ [format=%{&ff}]\ [type=%Y]\ [pos=%04l,%04v][%p%%][lns=%L]\ %{fugitive#statusline()}
+
 " Syntastic on status line
 set statusline+=%#warningmsg#
 set statusline+=%{SyntasticStatuslineFlag()}
@@ -99,7 +100,8 @@ set linebreak
 set formatoptions=qrn1
 
 """ Editing
-set wildignore=*.o,*.obj,*.bak,*.exe,*.pyc,*.swp
+set wildmode=list:longest,list:full
+set wildignore+=*.o,*.obj,.git,*.rbc,*.pyc,*.swp,*.class,.svn,vendor/gems/*
 
 """ Folding
 set foldmethod=syntax " By default, use syntax to determine folds
@@ -110,9 +112,9 @@ nnoremap / /\v
 vnoremap / /\v
 
 set ignorecase    " search is case insensitive
-set smartcase     " search case sensitive if caps on 
+set smartcase     " search case sensitive if caps on
 set incsearch     " show best match so far
-set hlsearch      " Highlight matches to the search 
+set hlsearch      " Highlight matches to the search
 set gdefault
 set showmatch
 
@@ -125,7 +127,7 @@ nnoremap <leader><space> :noh<cr>
 nnoremap <tab> %
 vnoremap <tab> %
 
-" forcing hjkl to move 
+" forcing hjkl to move
 nnoremap <up> <nop>
 nnoremap <down> <nop>
 nnoremap <left> <nop>
@@ -141,7 +143,7 @@ nnoremap k gk
 inoremap jj <ESC>
 nnoremap ; :
 
-"" Split windows 
+"" Split windows
 nnoremap <leader>w <C-w>v<C-w>l
 nnoremap <C-h> <C-w>h
 nnoremap <C-j> <C-w>j
@@ -185,7 +187,7 @@ map <Leader>e :Errors<CR>
 
 
 "" Functions
-" Python customization 
+" Python customization
 function LoadPythonGoodies()
 
         let $PYTHONPATH .= ":/".join(split( getcwd(),'/')[0:-2],'/')."/:/".join(split( getcwd(),'/')[0:-1],'/')."/"
@@ -230,7 +232,14 @@ au BufRead,BufNewFile Vagrantfile set filetype=ruby
 " Plugins configuration
 
 " TagList
-autocmd FileType python,perl,java,c,ant,sh,conf,cpp,css,haskell,htmldjango,html,javascript,lisp,vim,xml,yaml Tlist
+autocmd FileType python,perl,java,c,ant,sh,conf,cpp,css,haskell,lisp,xml,yaml Tlist
+
+" Coffeescript
+au BufNewFile,BufReadPost *.coffee setl foldmethod=indent nofoldenable
+au BufNewFile,BufReadPost *.coffee setl shiftwidth=2 expandtab
+
+" Clea whitespaces
+autocmd BufWritePre * :%s/\s\+$//e
 
 " Close everything
 let Tlist_Exit_OnlyWindow = 1
@@ -241,20 +250,37 @@ let g:pydiction_location='~/.vim/tags/complete-dict'
 " Load snipMate support functions
 source ~/.vim/snippets/support_functions.vim
 
-" Yankring 
+" Yankring
 let g:yankring_history_dir = '~/.vim/'
 
 " Syntastic
 let g:syntastic_enable_signs=1
-
-" minibufexpl
-let g:miniBufExplMapWindowNavVim = 1
-let g:miniBufExplMapWindowNavArrows = 1
-let g:miniBufExplMapCTabSwitchBufs = 1
-let g:miniBufExplModSelTarget = 1
+let g:syntastic_quiet_warnings=1
 
 " Supertab
 let g:SuperTabDefaultCompletionType = "context"
+
+"" Command-Shift-F for Ack
+map <D-F> :Ack<space>
+
+" CTags
+map <Leader>rt :!/usr/local/bin/ctags --extra=+f -R *<CR>
+map <C-\> :tnext<CR>
+
+" ZoomWin configuration
+map <Leader><Leader> :ZoomWin<CR>
+
+" VimClojure
+let vimclojure#FuzzyIndent=1
+let vimclojure#HighlightBuiltins=1
+let vimclojure#HighlightContrib=1
+let vimclojure#DynamicHighlighting=1
+let vimclojure#ParenRainbow=1
+let vimclojure#WantNailgun = 1
+let vimclojure#NailgunClient = $HOME . "/.vim/lib/vimclojure-nailgun-client/ng"
+
+" VimRoom
+let g:vimroom_guibackground = "#002b36"
 
 " Machine-local vim settings.
 silent! source ~/.vimrc.local

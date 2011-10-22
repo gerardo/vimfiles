@@ -58,9 +58,6 @@
 [submodule "bundle/vim-pep8"]
 	path = bundle/vim-pep8
 	url = https://github.com/nvie/vim-pep8.git
-[submodule "bundle/minibufexpl"]
-	path = bundle/minibufexpl
-	url = https://github.com/fholgado/minibufexpl.vim.git
 [submodule "bundle/pydiction"]
 	path = bundle/pydiction
         url = https://github.com/gerardo/Pydiction.git
@@ -97,3 +94,15 @@
 [submodule "bundle/vim-haml"]
 	path = bundle/vim-haml
 	url = https://github.com/tpope/vim-haml.git
+[submodule "bundle/vim-rooter"]
+	path = bundle/vim-rooter
+	url = https://github.com/airblade/vim-rooter.git
+[submodule "bundle/vimclojure"]
+	path = bundle/vimclojure
+	url = https://github.com/vim-scripts/VimClojure.git
+[submodule "bundle/vimroom"]
+	path = bundle/vimroom
+	url = https://github.com/mikewest/vimroom.git
+[submodule "bundle/zoomwin"]
+	path = bundle/zoomwin
+	url = https://github.com/vim-scripts/ZoomWin.git
