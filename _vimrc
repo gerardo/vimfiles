@@ -219,6 +219,10 @@ autocmd FileType python set ft=python.django " For SnipMate
 autocmd FileType html set ft=htmldjango.html " For SnipMate
 autocmd FileType python set efm=%C\ %.%#,%A\ \ File\ \"%f\"\\,\ line\ %l%.%#,%Z%[%^\ ]%\\@=%m
 
+" Settings for VimClojure
+let vimclojure#HighlightBuiltins=1 
+let vimclojure#ParenRainbow=1
+
 " Highligting
 
 " Highlight JSON files as javascript

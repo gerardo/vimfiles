@@ -97,3 +97,9 @@
 [submodule "bundle/vim-haml"]
 	path = bundle/vim-haml
 	url = https://github.com/tpope/vim-haml.git
+[submodule "bundle/vim-clojure"]
+	path = bundle/vim-clojure
+	url = https://github.com/vim-scripts/VimClojure.git
+[submodule "bundle/slimv.vim"]
+	path = bundle/slimv.vim
+	url = https://github.com/vim-scripts/slimv.vim.git
