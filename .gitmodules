@@ -109,4 +109,3 @@
 [submodule "bundle/zoomwin"]
 	path = bundle/zoomwin
 	url = https://github.com/vim-scripts/ZoomWin.git
->>>>>>> e02df20431439734b0c61a68ff4b26dab5d686ec
