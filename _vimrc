@@ -226,6 +226,9 @@ autocmd FileType python set efm=%C\ %.%#,%A\ \ File\ \"%f\"\\,\ line\ %l%.%#,%Z%
 " Highlight JSON files as javascript
 autocmd BufRead,BufNewFile *.json set filetype=javascript
 
+" same for javascript templates
+autocmd BufRead,BufNewFile *.jst set filetype=htmldjango.html
+
 " Vagrant
 au BufRead,BufNewFile Vagrantfile set filetype=ruby
 
