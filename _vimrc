@@ -222,7 +222,7 @@ autocmd FileType html set ft=htmldjango.html " For SnipMate
 autocmd FileType python set efm=%C\ %.%#,%A\ \ File\ \"%f\"\\,\ line\ %l%.%#,%Z%[%^\ ]%\\@=%m
 
 " Settings for VimClojure
-let vimclojure#HighlightBuiltins=1 
+let vimclojure#HighlightBuiltins=1
 let vimclojure#ParenRainbow=1
 
 " Highligting
@@ -288,6 +288,38 @@ let vimclojure#NailgunClient = $HOME . "/.vim/lib/vimclojure-nailgun-client/ng"
 
 " VimRoom
 let g:vimroom_guibackground = "#002b36"
+
+" LaTex support
+
+" VIM LaTeX specific configurations for Mac OS X
+filetype plugin on
+set grepprg=grep\ -nH\ $*
+let g:tex_flavor='latex'
+let g:Tex_DefaultTargetFormat = 'pdf'
+let g:Tex_CompileRule_dvi = 'latex --interaction=nonstopmode $*'
+let g:Tex_CompileRule_ps = 'dvips -Pwww -o $*.ps $*.dvi'
+let g:Tex_CompileRule_ps = 'dvips -Ppdf -o $*.ps $*.dvi'
+let g:Tex_CompileRule_pspdf = 'ps2pdf $*.ps'
+let g:Tex_CompileRule_dvipdf = 'dvipdfm $*.dvi'
+let g:Tex_CompileRule_pdf = 'pdflatex -synctex=1 --interaction=nonstopmode $*'
+let g:Tex_FormatDependency_ps  = 'dvi,ps'
+let g:Tex_FormatDependency_pspdf = 'dvi,ps,pspdf'
+let g:Tex_FormatDependency_dvipdf = 'dvi,dvipdf'
+
+if has("unix")
+  let s:uname = system("echo -n \"$(uname)\"")
+  if !v:shell_error && s:uname == "Linux"
+     " Linux-specific settings
+     let g:Tex_ViewRule_dvi = 'evince'
+     let g:Tex_ViewRule_ps = 'evince'
+     let g:Tex_ViewRule_pdf = 'evince'
+  else
+    " OSX-specific settings
+     let g:Tex_ViewRule_dvi = 'Skim'
+     let g:Tex_ViewRule_ps = 'Preview'
+     let g:Tex_ViewRule_pdf = 'open -a Preview'
+  endif
+endif
 
 " Machine-local vim settings.
 silent! source ~/.vimrc.local

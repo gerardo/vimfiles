@@ -35,6 +35,6 @@ if has("unix")
      let Tlist_Ctags_Cmd = '/usr/local/bin/ctags'
      " Fullscreen takes up entire screen
      set fuoptions=maxhorz,maxvert"
- endif
+  endif
 endif
 
