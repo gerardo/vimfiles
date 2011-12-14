@@ -44,14 +44,12 @@ set softtabstop=4
 set shiftwidth=4
 set autoindent
 set smarttab
-set wildchar=9
 set clipboard+=unnamed  " Yanks go on clipboard instead.
 set showmatch " Show matching braces.
 
 set showmode
 set showcmd
 set hidden
-set wildmenu
 set cursorline
 set laststatus=2
 set showfulltag
@@ -61,6 +59,8 @@ set encoding=utf-8
 set fileencoding=utf8
 set ruler
 set pastetoggle=<F2>
+set splitbelow
+set title
 
 " We're not in the 70's anymore
 set nobackup
@@ -83,8 +83,7 @@ hi LineNr ctermfg=blue guifg=blue
 set colorcolumn=80
 
 """ Informational status line
-set statusline=%F%m%r%h%w\ [format=%{&ff}]\ [type=%Y]\ [pos=%04l,%04v][%p%%][lns=%L]\ %{fugitive#statusline()}
-
+set statusline=%F%m%r%h%w\ [%{&ff}]\ [%Y]\ [pos=%04l,%04v][%p%%][lns=%L]\ %{fugitive#statusline()}
 " Syntastic on status line
 set statusline+=%#warningmsg#
 set statusline+=%{SyntasticStatuslineFlag()}
@@ -93,6 +92,7 @@ set statusline+=%*
 " Show invisible chars
 set list
 set listchars=tab:▸\ ,trail:¬
+set fillchars=diff:⣿
 
 " Line wrapping on by default
 set wrap
@@ -100,8 +100,14 @@ set linebreak
 set formatoptions=qrn1
 
 """ Editing
+set wildchar=9
+set wildmenu
 set wildmode=list:longest,list:full
-set wildignore+=*.o,*.obj,.git,*.rbc,*.pyc,*.swp,*.class,.svn,vendor/gems/*
+set wildignore+=*.o,*.obj,.git,*.rbc,*.pyc,*.swp,*.class,vendor/gems/*
+set wildignore+=.hg,.git,.svn                    " Version control
+set wildignore+=*.aux,*.out,*.toc                " LaTeX intermediate files
+set wildignore+=*.jpg,*.bmp,*.gif,*.png,*.jpeg   " binary images
+set wildignore+=*.DS_Store                       " OSX
 
 """ Folding
 set foldmethod=syntax " By default, use syntax to determine folds
@@ -145,10 +151,17 @@ nnoremap ; :
 
 "" Split windows
 nnoremap <leader>w <C-w>v<C-w>l
+nnoremap <leader>ww <C-w>s<C-w>l
 nnoremap <C-h> <C-w>h
 nnoremap <C-j> <C-w>j
 nnoremap <C-k> <C-w>k
 nnoremap <C-l> <C-w>l
+
+" Save when losing focus
+au FocusLost * :wa
+
+" Resize splits when the window is resized
+au VimResized * exe "normal! \<c-w>="
 
 """ Ctrl+Space autocompletion
 imap <c-space> <c-x><c-o>
@@ -179,12 +192,8 @@ map  ,s   <Esc>:syn on<CR>
 map <leader>j :RopeGotoDefinition<CR>
 map <leader>r :RopeRename<CR>
 
-" Easy access to the shell.
-map <Leader><Leader> :!
-
 " Access to syntastic location-list.
 map <Leader>e :Errors<CR>
-
 
 "" Functions
 " Python customization
@@ -220,6 +229,7 @@ au BufNewFile,BufRead *.py call LoadPythonGoodies()
 autocmd FileType python set ft=python.django " For SnipMate
 autocmd FileType html set ft=htmldjango.html " For SnipMate
 autocmd FileType python set efm=%C\ %.%#,%A\ \ File\ \"%f\"\\,\ line\ %l%.%#,%Z%[%^\ ]%\\@=%m
+autocmd FileType python set omnifunc=pythoncomplete#Complete
 
 " Settings for VimClojure
 let vimclojure#HighlightBuiltins=1
@@ -239,7 +249,7 @@ au BufRead,BufNewFile Vagrantfile set filetype=ruby
 " Plugins configuration
 
 " TagList
-autocmd FileType python,perl,java,c,ant,sh,conf,cpp,css,haskell,lisp,xml,yaml Tlist
+autocmd FileType perl,java,c,ant,sh,conf,cpp,haskell,lisp,xml,yaml Tlist
 
 " Coffeescript
 au BufNewFile,BufReadPost *.coffee setl foldmethod=indent nofoldenable
