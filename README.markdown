@@ -6,7 +6,7 @@
 
 ## Installation
 
-    git clone git://github.com/gcuriel/vimfiles.git ~/.vim
+    git clone git://github.com/gerardo/vimfiles.git ~/.vim
 
 Create symlinks:
 
