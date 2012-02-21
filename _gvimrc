@@ -30,7 +30,7 @@ if has("unix")
     " OSX-specific settings
      colorscheme solarized
      set guifont=Menlo\ Regular:h11
-     set transparency=15
+     "set transparency=5
     " We don't want to use the ctags command shipped by OS X
      let Tlist_Ctags_Cmd = '/usr/local/bin/ctags'
      " Fullscreen takes up entire screen
