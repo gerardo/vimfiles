@@ -109,3 +109,6 @@
 [submodule "bundle/vim-latex"]
 	path = bundle/vim-latex
 	url = https://github.com/jcf/vim-latex.git
+[submodule "bundle/vim-octopress"]
+	path = bundle/vim-octopress
+	url = https://github.com/tangledhelix/vim-octopress.git
