@@ -19,11 +19,6 @@ Switch to the `~/.vim` directory, and fetch submodules:
     git submodule init
     git submodule update
 
-You will need to compile the ruby extension for command-t
-
-    cd ~/.vim/bundle/command-t
-    rake make
-
 ## Features
 
-More information to come. 
+More information to come.

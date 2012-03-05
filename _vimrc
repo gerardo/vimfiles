@@ -299,6 +299,9 @@ let vimclojure#NailgunClient = $HOME . "/.vim/lib/vimclojure-nailgun-client/ng"
 " VimRoom
 let g:vimroom_guibackground = "#002b36"
 
+" Octopress
+autocmd BufNewFile,BufRead *.markdown,*.textile setfiletype octopress
+
 " LaTex support
 
 " VIM LaTeX specific configurations for Mac OS X
