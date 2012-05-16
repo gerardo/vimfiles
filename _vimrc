@@ -89,6 +89,10 @@ set statusline+=%#warningmsg#
 set statusline+=%{SyntasticStatuslineFlag()}
 set statusline+=%*
 
+" Powerline
+let g:Powerline_symbols = 'fancy'
+
+
 " Show invisible chars
 set list
 set listchars=tab:▸\ ,trail:¬
@@ -178,12 +182,12 @@ inoremap <F1> <ESC>
 nnoremap <F1> <ESC>
 vnoremap <F1> <ESC>
 
-""" Toggle taglist
-nmap <F3> :TlistToggle<cr>
-
 " YankRing
 nnoremap <silent> <F4> :YRShow<cr>
 inoremap <silent> <F4> <ESC>:YRShow<cr>
+
+"" TagBar
+nmap <F8> :TagbarToggle<CR>
 
 "" Gundo
 nnoremap <F5> :GundoToggle<CR>
@@ -254,18 +258,12 @@ au BufRead,BufNewFile Vagrantfile set filetype=ruby
 
 " Plugins configuration
 
-" TagList
-autocmd FileType perl,java,c,ant,sh,conf,cpp,haskell,lisp,xml,yaml Tlist
-
 " Coffeescript
 au BufNewFile,BufReadPost *.coffee setl foldmethod=indent nofoldenable
 au BufNewFile,BufReadPost *.coffee setl shiftwidth=2 expandtab
 
 " Clea whitespaces
 autocmd BufWritePre * :%s/\s\+$//e
-
-" Close everything
-let Tlist_Exit_OnlyWindow = 1
 
 " Pydiction
 let g:pydiction_location='~/.vim/tags/complete-dict'
