@@ -43,18 +43,12 @@
 [submodule "bundle/rainbow-parenthesis"]
 	path = bundle/rainbow-parenthesis
 	url = https://github.com/vim-scripts/Rainbow-Parenthesis.git
-[submodule "bundle/vim-pyflakes"]
-	path = bundle/vim-pyflakes
-	url = https://github.com/kevinw/pyflakes-vim.git
 [submodule "bundle/gundo"]
 	path = bundle/gundo
 	url = https://github.com/sjl/gundo.vim.git
 [submodule "bundle/vim-fugitive"]
 	path = bundle/vim-fugitive
 	url = https://github.com/tpope/vim-fugitive.git
-[submodule "bundle/vim-pep8"]
-	path = bundle/vim-pep8
-	url = https://github.com/nvie/vim-pep8.git
 [submodule "bundle/pydiction"]
 	path = bundle/pydiction
         url = https://github.com/gerardo/Pydiction.git
@@ -85,9 +79,6 @@
 [submodule "bundle/syntastic"]
 	path = bundle/syntastic
 	url = https://github.com/scrooloose/syntastic.git
-[submodule "bundle/hammer"]
-	path = bundle/hammer
-	url = git://github.com/robgleeson/hammer.vim.git
 [submodule "bundle/vim-haml"]
 	path = bundle/vim-haml
 	url = https://github.com/tpope/vim-haml.git
@@ -112,3 +103,15 @@
 [submodule "bundle/vim-octopress"]
 	path = bundle/vim-octopress
 	url = https://github.com/tangledhelix/vim-octopress.git
+[submodule "bundle/vim-snipmate"]
+	path = bundle/vim-snipmate
+	url = git://github.com/garbas/vim-snipmate.git
+[submodule "bundle/tlib_vim"]
+	path = bundle/tlib_vim
+	url = https://github.com/tomtom/tlib_vim.git
+[submodule "bundle/vim-addon-mw-utils"]
+	path = bundle/vim-addon-mw-utils
+	url = https://github.com/MarcWeber/vim-addon-mw-utils.git
+[submodule "bundle/snipmate-snippets"]
+	path = bundle/snipmate-snippets
+	url = https://github.com/honza/snipmate-snippets.git
