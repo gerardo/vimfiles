@@ -19,12 +19,13 @@ filetype plugin indent on
 syntax enable
 
 set background=dark
-set t_Co=256
-
-let g:solarized_termcolors=256
+let g:solarized_termcolors=16
+let g:solarized_visibility="high"    "default value is normal
+let g:solarized_contrast="high"    "default value is normal
 colorscheme solarized
 
 let g:obviousModeInsertHi = "ctermfg=253 ctermbg=16"
+set t_Co=256
 
 " mapleader
 let mapleader = ","
@@ -167,9 +168,8 @@ au FocusLost * :wa
 " Resize splits when the window is resized
 au VimResized * exe "normal! \<c-w>="
 
-""" Ctrl+Space autocompletion
-
-""" Now it's compatible with console an macvim versions
+""" Ctrl+Space autocompletion. Now it's compatible
+""" with console an macvim versions
 inoremap <expr> <C-Space> pumvisible() \|\| &omnifunc == '' ?
 \ "\<lt>C-n>" :
 \ "\<lt>C-x>\<lt>C-o><c-r>=pumvisible() ?" .
@@ -202,44 +202,20 @@ map  ,s   <Esc>:syn on<CR>
 " Access to syntastic location-list.
 map <Leader>e :Errors<CR>
 
-"" Functions
-" Python customization
-function LoadPythonGoodies()
-
-        let $PYTHONPATH .= ":/".join(split( getcwd(),'/')[0:-2],'/')."/:/".join(split( getcwd(),'/')[0:-1],'/')."/"
-        exec "set path+='/".join(split( getcwd(),'/')[0:-2],'/')."/,/".join(split( getcwd(),'/')[0:-1],'/')."/'"
-        python import os,sys,vim
-        exec "python sys.path.insert(0,'/".join(split( getcwd(),'/')[0:-2],'/')."')"
-        exec "python sys.path.insert(0,'/".join(split( getcwd(),'/')[0:-1],'/')."')"
-
-        " set python path to vim's search path
-        python << EOF
-import os, sys, vim
-for p in sys.path:
-    if os.path.isdir(p):
-        vim.command(r"set path+=%s" % (p.replace(" ", r"\ ")))
-EOF
-            " some nice adjustaments to show errors
-            let python_highlight_builtins = 1
-            let python_highlight_exceptions = 1
-            let python_highlight_string_formatting = 1
-            let python_highlight_string_format = 1
-            let python_highlight_string_templates = 1
-            let python_highlight_indent_errors = 1
-            let python_highlight_space_errors = 1
-            let python_highlight_doctests = 1
-endfunction
-
 """ python-specific settings
 
 autocmd FileType python set efm=%C\ %.%#,%A\ \ File\ \"%f\"\\,\ line\ %l%.%#,%Z%[%^\ ]%\\@=%m
-autocmd FileType python set omnifunc=pythoncomplete#Complete
-
-au BufNewFile,BufRead *.py call LoadPythonGoodies()
-
 autocmd FileType python set ft=python.django " For SnipMate
 autocmd FileType html set ft=html.htmldjango " For SnipMate
 autocmd FileType htmldjango set ft=html.htmldjango " For SnipMate
+
+""" Omnicompletion
+autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
+autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
+autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
+autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
+autocmd FileType python set omnifunc=pythoncomplete#Complete
+autocmd FileType python.django set omnifunc=pythoncomplete#Complete
 
 " Settings for VimClojure
 let vimclojure#HighlightBuiltins=1
@@ -264,9 +240,6 @@ au BufNewFile,BufReadPost *.coffee setl shiftwidth=2 expandtab
 
 " Clea whitespaces
 autocmd BufWritePre * :%s/\s\+$//e
-
-" Pydiction
-let g:pydiction_location='~/.vim/tags/complete-dict'
 
 " Load snipMate support functions
 "source ~/.vim/snippets/support_functions.vim
