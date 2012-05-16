@@ -236,11 +236,7 @@ au BufNewFile,BufRead *.py call LoadPythonGoodies()
 autocmd FileType python set ft=python.django " For SnipMate
 autocmd FileType html set ft=html.htmldjango " For SnipMate
 autocmd FileType htmldjango set ft=html.htmldjango " For SnipMate
-"let g:syntastic_mode_map = { 'mode': 'active',
-                           "\ 'active_filetypes': ['python'],
-                           "\ 'passive_filetypes': ['puppet'] }
 
-let g:syntastic_python_checker = 'flake8'
 " Settings for VimClojure
 let vimclojure#HighlightBuiltins=1
 let vimclojure#ParenRainbow=1
@@ -284,10 +280,6 @@ let g:yankring_history_dir = '~/.vim/'
 let g:syntastic_check_on_open=1
 let g:syntastic_enable_signs=1
 let g:syntastic_auto_loc_list=2
-let g:syntastic_python_checker = 'flake8'
-let g:syntastic_mode_map = { 'mode': 'active',
-                            \ 'active_filetypes': ['django', 'python'],
-                            \ 'passive_filetypes': ['puppet'] }
 
 " Supertab
 let g:SuperTabDefaultCompletionType = "context"
