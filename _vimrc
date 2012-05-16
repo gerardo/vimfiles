@@ -164,7 +164,14 @@ au FocusLost * :wa
 au VimResized * exe "normal! \<c-w>="
 
 """ Ctrl+Space autocompletion
-imap <c-space> <c-x><c-o>
+
+""" Now it's compatible with console an macvim versions
+inoremap <expr> <C-Space> pumvisible() \|\| &omnifunc == '' ?
+\ "\<lt>C-n>" :
+\ "\<lt>C-x>\<lt>C-o><c-r>=pumvisible() ?" .
+\ "\"\\<lt>c-n>\\<lt>c-p>\\<lt>c-n>\" :" .
+\ "\" \\<lt>bs>\\<lt>C-n>\"\<CR>"
+imap <C-@> <C-Space>
 
 " disable F1 help
 inoremap <F1> <ESC>
@@ -187,10 +194,6 @@ noremap <C-E><C-E> :NERDTree<CR>
 """ Disable/enable syntax highlight
 map  ,S   <Esc>:syn off<CR>
 map  ,s   <Esc>:syn on<CR>
-
-" Refactoring. Rope shortcuts (IN PROGRESS)
-map <leader>j :RopeGotoDefinition<CR>
-map <leader>r :RopeRename<CR>
 
 " Access to syntastic location-list.
 map <Leader>e :Errors<CR>
@@ -225,14 +228,19 @@ endfunction
 
 """ python-specific settings
 
-autocmd FileType python set omnifunc=pythoncomplete#Complete
-
-au BufNewFile,BufRead *.py call LoadPythonGoodies()
-autocmd FileType python set ft=python.django " For SnipMate
-autocmd FileType html set ft=htmldjango.html " For SnipMate
 autocmd FileType python set efm=%C\ %.%#,%A\ \ File\ \"%f\"\\,\ line\ %l%.%#,%Z%[%^\ ]%\\@=%m
 autocmd FileType python set omnifunc=pythoncomplete#Complete
 
+au BufNewFile,BufRead *.py call LoadPythonGoodies()
+
+autocmd FileType python set ft=python.django " For SnipMate
+autocmd FileType html set ft=html.htmldjango " For SnipMate
+autocmd FileType htmldjango set ft=html.htmldjango " For SnipMate
+"let g:syntastic_mode_map = { 'mode': 'active',
+                           "\ 'active_filetypes': ['python'],
+                           "\ 'passive_filetypes': ['puppet'] }
+
+let g:syntastic_python_checker = 'flake8'
 " Settings for VimClojure
 let vimclojure#HighlightBuiltins=1
 let vimclojure#ParenRainbow=1
@@ -243,7 +251,7 @@ let vimclojure#ParenRainbow=1
 autocmd BufRead,BufNewFile *.json set filetype=javascript
 
 " same for javascript templates
-autocmd BufRead,BufNewFile *.jst set filetype=htmldjango.html
+autocmd BufRead,BufNewFile *.jst set filetype=html.htmldjango
 
 " Vagrant
 au BufRead,BufNewFile Vagrantfile set filetype=ruby
@@ -267,14 +275,19 @@ let Tlist_Exit_OnlyWindow = 1
 let g:pydiction_location='~/.vim/tags/complete-dict'
 
 " Load snipMate support functions
-source ~/.vim/snippets/support_functions.vim
+"source ~/.vim/snippets/support_functions.vim
 
 " Yankring
 let g:yankring_history_dir = '~/.vim/'
 
 " Syntastic
+let g:syntastic_check_on_open=1
 let g:syntastic_enable_signs=1
-let g:syntastic_quiet_warnings=1
+let g:syntastic_auto_loc_list=2
+let g:syntastic_python_checker = 'flake8'
+let g:syntastic_mode_map = { 'mode': 'active',
+                            \ 'active_filetypes': ['django', 'python'],
+                            \ 'passive_filetypes': ['puppet'] }
 
 " Supertab
 let g:SuperTabDefaultCompletionType = "context"
@@ -293,7 +306,7 @@ map <Leader><Leader> :ZoomWin<CR>
 let vimclojure#FuzzyIndent=1
 let vimclojure#HighlightBuiltins=1
 let vimclojure#HighlightContrib=1
-let vimclojure#DynamicHighlighting=1
+let vimclojure#DynamicHighlighting=0
 let vimclojure#ParenRainbow=1
 let vimclojure#WantNailgun = 1
 let vimclojure#NailgunClient = $HOME . "/.vim/lib/vimclojure-nailgun-client/ng"

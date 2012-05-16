@@ -10,15 +10,9 @@
 [submodule "bundle/bufexplorer"]
 	path = bundle/bufexplorer
 	url = https://github.com/vim-scripts/bufexplorer.zip.git
-[submodule "bundle/snipmate"]
-	path = bundle/snipmate
-	url = https://github.com/msanders/snipmate.vim.git
 [submodule "bundle/taglist"]
 	path = bundle/taglist
 	url = https://github.com/gerardo/taglist.vim.git
-[submodule "snippets"]
-	path = snippets
-	url = https://github.com/gerardo/snipmate-snippets.git
 [submodule "bundle/nerdcommenter"]
 	path = bundle/nerdcommenter
 	url = https://github.com/scrooloose/nerdcommenter.git
