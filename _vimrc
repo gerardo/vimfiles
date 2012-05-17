@@ -45,6 +45,7 @@ set softtabstop=4
 set shiftwidth=4
 set autoindent
 set smarttab
+
 set clipboard+=unnamed  " Yanks go on clipboard instead.
 set showmatch " Show matching braces.
 
@@ -279,6 +280,23 @@ let g:vimroom_guibackground = "#002b36"
 
 " Octopress
 autocmd BufNewFile,BufRead *.markdown,*.textile setfiletype octopress
+
+" TagBar
+if executable('coffeetags')
+  let g:tagbar_type_coffee = {
+        \ 'ctagsbin' : 'coffeetags',
+        \ 'ctagsargs' : '--include-vars',
+        \ 'kinds' : [
+        \ 'f:functions',
+        \ 'o:object',
+        \ ],
+        \ 'sro' : ".",
+        \ 'kind2scope' : {
+        \ 'f' : 'object',
+        \ 'o' : 'object',
+        \ }
+        \ }
+endif
 
 " LaTex support
 
