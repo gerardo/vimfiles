@@ -16,9 +16,6 @@
 [submodule "bundle/matchit"]
 	path = bundle/matchit
 	url = https://github.com/vim-scripts/matchit.zip.git
-[submodule "bundle/pydoc"]
-	path = bundle/pydoc
-	url = https://github.com/fs111/pydoc.vim.git
 [submodule "bundle/vim-surround"]
 	path = bundle/vim-surround
 	url = https://github.com/tpope/vim-surround.git
@@ -31,18 +28,12 @@
 [submodule "bundle/vim-fugitive"]
 	path = bundle/vim-fugitive
 	url = https://github.com/tpope/vim-fugitive.git
-[submodule "bundle/pydiction"]
-	path = bundle/pydiction
-        url = https://github.com/gerardo/Pydiction.git
 [submodule "bundle/supertab"]
 	path = bundle/supertab
 	url = https://github.com/ervandew/supertab.git
 [submodule "bundle/vim-solarized"]
 	path = bundle/vim-solarized
 	url = https://github.com/altercation/vim-colors-solarized.git
-[submodule "bundle/vim-peepopen"]
-	path = bundle/vim-peepopen
-	url = https://github.com/shemerey/vim-peepopen.git
 [submodule "bundle/rope-vim"]
 	path = bundle/rope-vim
 	url = https://github.com/sontek/rope-vim.git
@@ -106,3 +97,6 @@
 [submodule "bundle/neocomplcache"]
 	path = bundle/neocomplcache
 	url = https://github.com/Shougo/neocomplcache.git
+[submodule "bundle/command-t"]
+	path = bundle/command-t
+	url = git://git.wincent.com/command-t.git
