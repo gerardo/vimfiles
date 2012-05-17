@@ -22,3 +22,8 @@ Switch to the `~/.vim` directory, and fetch submodules:
 ## Features
 
 More information to come.
+
+## Feedback
+
+Suggestions and improvements [welcome](https://github.com/gerardo/vimfiles/issues)!
+
