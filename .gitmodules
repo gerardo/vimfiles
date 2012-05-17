@@ -94,3 +94,9 @@
 [submodule "bundle/command-t"]
 	path = bundle/command-t
 	url = git://git.wincent.com/command-t.git
+[submodule "bundle/vim-slime"]
+	path = bundle/vim-slime
+	url = https://github.com/jpalardy/vim-slime.git
+[submodule "bundle/vim-django-support"]
+	path = bundle/vim-django-support
+	url = git@github.com:gerardo/vim-django-support.git

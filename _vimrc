@@ -203,6 +203,9 @@ map  ,s   <Esc>:syn on<CR>
 " Access to syntastic location-list.
 map <Leader>e :Errors<CR>
 
+" Clear whitespaces
+autocmd BufWritePre * :%s/\s\+$//e
+
 """ python-specific settings
 
 autocmd FileType python set efm=%C\ %.%#,%A\ \ File\ \"%f\"\\,\ line\ %l%.%#,%Z%[%^\ ]%\\@=%m
@@ -239,12 +242,6 @@ au BufRead,BufNewFile Vagrantfile set filetype=ruby
 au BufNewFile,BufReadPost *.coffee setl foldmethod=indent nofoldenable
 au BufNewFile,BufReadPost *.coffee setl shiftwidth=2 expandtab
 
-" Clea whitespaces
-autocmd BufWritePre * :%s/\s\+$//e
-
-" Load snipMate support functions
-"source ~/.vim/snippets/support_functions.vim
-
 " Yankring
 let g:yankring_history_dir = '~/.vim/'
 
@@ -265,6 +262,9 @@ map <C-\> :tnext<CR>
 
 " ZoomWin configuration
 map <Leader><Leader> :ZoomWin<CR>
+
+"Slime
+let g:slime_target = "tmux"
 
 " VimClojure
 let vimclojure#FuzzyIndent=1
