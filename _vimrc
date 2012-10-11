@@ -1,4 +1,4 @@
-"" Main Vim/MacVim configuration
+"" Main Vim configuration
 ""
 "" Gerardo Curiel <gerardo@gerardo.cc>
 
@@ -30,7 +30,7 @@ let g:obviousModeInsertHi = "ctermfg=253 ctermbg=16"
 let mapleader = ","
 
 "store lots of :cmdline history
-set history=1000
+set history=500
 set ttyfast
 
 "allow backspacing over everything in insert mode
@@ -116,10 +116,6 @@ set wildignore+=*.DS_Store                       " OSX
 set foldmethod=syntax " By default, use syntax to determine folds
 set foldlevelstart=99 " All folds open by default
 
-""" Searching and Patterns
-nnoremap / /\v
-vnoremap / /\v
-
 set ignorecase    " search is case insensitive
 set smartcase     " search case sensitive if caps on
 set incsearch     " show best match so far
@@ -127,14 +123,31 @@ set hlsearch      " Highlight matches to the search
 set gdefault
 set showmatch
 
-" Stop search highlight
-nnoremap <leader><space> :noh<cr>
 
 """" Keyboard shortcuts
+
+" Searching and Patterns
+nnoremap / /\v
+vnoremap / /\v
+
+" disable F1 help
+inoremap <F1> <ESC>
+nnoremap <F1> <ESC>
+vnoremap <F1> <ESC>
 
 " Use Tab to match opening/closing brackets
 nnoremap <tab> %
 vnoremap <tab> %
+
+""" Disable/enable syntax highlight
+map  ,S   <Esc>:syn off<CR>
+map  ,s   <Esc>:syn on<CR>
+
+" Stop search highlight
+nnoremap <leader><space> :noh<cr>
+
+" Save when losing focus
+au FocusLost * :wa
 
 " forcing hjkl to move
 nnoremap <up> <nop>
@@ -160,17 +173,11 @@ nnoremap <C-j> <C-w>j
 nnoremap <C-k> <C-w>k
 nnoremap <C-l> <C-w>l
 
-" Save when losing focus
-au FocusLost * :wa
-
-" Kwbd
-nmap <C-W>! <Plug>Kwbd
-
 " Resize splits when the window is resized
 au VimResized * exe "normal! \<c-w>="
 
-""" Ctrl+Space autocompletion. Now it's compatible
-""" with console an macvim versions
+""" Ctrl+Space autocompletion.
+""" Compatible with console an macvim versions
 inoremap <expr> <C-Space> pumvisible() \|\| &omnifunc == '' ?
 \ "\<lt>C-n>" :
 \ "\<lt>C-x>\<lt>C-o><c-r>=pumvisible() ?" .
@@ -178,10 +185,8 @@ inoremap <expr> <C-Space> pumvisible() \|\| &omnifunc == '' ?
 \ "\" \\<lt>bs>\\<lt>C-n>\"\<CR>"
 imap <C-@> <C-Space>
 
-" disable F1 help
-inoremap <F1> <ESC>
-nnoremap <F1> <ESC>
-vnoremap <F1> <ESC>
+" Kwbd
+nmap <C-W>! <Plug>Kwbd
 
 "" TagBar
 nmap <F8> :TagbarToggle<CR>
@@ -189,18 +194,21 @@ nmap <F8> :TagbarToggle<CR>
 "" Bind NERD_Tree plugin to a <Ctrl+E,Ctrl+E>
 noremap <C-E><C-E> :NERDTree<CR>
 
-""" Disable/enable syntax highlight
-map  ,S   <Esc>:syn off<CR>
-map  ,s   <Esc>:syn on<CR>
-
 " Access to syntastic location-list.
 map <Leader>e :Errors<CR>
+
+"" Command-Shift-F for Ack
+map <D-F> :Ack<space>
+
+" CTags
+map <Leader>rt :!/usr/local/bin/ctags --extra=+f -R *<CR>
+map <C-\> :tnext<CR>
 
 " Clear whitespaces
 autocmd BufWritePre * :%s/\s\+$//e
 
-""" python-specific settings
 
+""" Filetypes
 autocmd FileType python set efm=%C\ %.%#,%A\ \ File\ \"%f\"\\,\ line\ %l%.%#,%Z%[%^\ ]%\\@=%m
 autocmd FileType python set ft=python.django " For SnipMate
 autocmd FileType html set ft=html.htmldjango " For SnipMate
@@ -211,6 +219,8 @@ autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
 autocmd BufNewFile,BufRead *.scss set ft=scss.css
 
 autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
+autocmd BufRead,BufNewFile *.json set filetype=javascript
+autocmd BufRead,BufNewFile *.jst set filetype=html.htmldjango
 
 autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
 autocmd FileType python set omnifunc=pythoncomplete#Complete
@@ -218,20 +228,14 @@ autocmd FileType python.django set omnifunc=pythoncomplete#Complete
 
 autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
 
-" Highlight JSON files as javascript
-autocmd BufRead,BufNewFile *.json set filetype=javascript
-
-" same for javascript templates
-autocmd BufRead,BufNewFile *.jst set filetype=html.htmldjango
-
-" Vagrant
-au BufRead,BufNewFile Vagrantfile set filetype=ruby
-
-" Plugins configuration
-
-" Coffeescript
 au BufNewFile,BufReadPost *.coffee setl foldmethod=indent nofoldenable
 au BufNewFile,BufReadPost *.coffee setl shiftwidth=2 expandtab
+
+au BufRead,BufNewFile Vagrantfile set filetype=ruby
+autocmd BufNewFile,BufRead *.markdown,*.textile setfiletype octopress
+
+
+""" Plugins configuration
 
 " Syntastic
 let g:syntastic_enable_signs=1
@@ -248,13 +252,6 @@ let g:html_indent_style1 = "inc"
 " Supertab
 let g:SuperTabDefaultCompletionType = "context"
 
-"" Command-Shift-F for Ack
-map <D-F> :Ack<space>
-
-" CTags
-map <Leader>rt :!/usr/local/bin/ctags --extra=+f -R *<CR>
-map <C-\> :tnext<CR>
-
 "Slime
 let g:slime_target = "tmux"
 
@@ -266,9 +263,6 @@ let vimclojure#DynamicHighlighting=0
 let vimclojure#ParenRainbow=1
 let vimclojure#WantNailgun = 1
 let vimclojure#NailgunClient = $HOME . "/.vim/lib/vimclojure-nailgun-client/ng"
-
-" Octopress
-autocmd BufNewFile,BufRead *.markdown,*.textile setfiletype octopress
 
 " TagBar
 if executable('coffeetags')
@@ -290,7 +284,6 @@ endif
 " Gist
 let g:gist_detect_filetype = 1
 let g:gist_open_browser_after_post = 1
-
 
 " LaTex support
 
