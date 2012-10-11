@@ -7,8 +7,7 @@ set nocompatible
 
 " activate pathogen module manage
 filetype off
-call pathogen#helptags()
-call pathogen#runtime_append_all_bundles()
+call pathogen#infect()
 
 filetype on
 filetype plugin on
@@ -213,8 +212,6 @@ autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
 autocmd FileType python set omnifunc=pythoncomplete#Complete
 autocmd FileType python.django set omnifunc=pythoncomplete#Complete
 
-" Highligting
-
 " Highlight JSON files as javascript
 autocmd BufRead,BufNewFile *.json set filetype=javascript
 
@@ -231,13 +228,13 @@ au BufNewFile,BufReadPost *.coffee setl foldmethod=indent nofoldenable
 au BufNewFile,BufReadPost *.coffee setl shiftwidth=2 expandtab
 
 " Syntastic
-let g:syntastic_check_on_open=1
 let g:syntastic_enable_signs=1
 let g:syntastic_auto_loc_list=2
 let g:syntastic_python_checker_args='--ignore=W404'
+let g:syntastic_enable_balloons = 0
+let g:syntastic_enable_highlighting = 0
 
 " HTML indent
-
 let g:html_indent_inctags = "html,body,head,tbody"
 let g:html_indent_script1 = "inc"
 let g:html_indent_style1 = "inc"
