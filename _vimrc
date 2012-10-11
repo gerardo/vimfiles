@@ -163,6 +163,9 @@ nnoremap <C-l> <C-w>l
 " Save when losing focus
 au FocusLost * :wa
 
+" Kwbd
+nmap <C-W>! <Plug>Kwbd
+
 " Resize splits when the window is resized
 au VimResized * exe "normal! \<c-w>="
 

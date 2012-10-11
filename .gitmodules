@@ -106,3 +106,15 @@
 [submodule "bundle/NrrwRgn"]
 	path = bundle/NrrwRgn
 	url = git://github.com/chrisbra/NrrwRgn.git
+[submodule "bundle/Kwbd"]
+	path = bundle/Kwbd
+	url = git://github.com/rgarver/Kwbd.vim.git
+[submodule "bundle/rename2"]
+	path = bundle/rename2
+	url = git://github.com/vim-scripts/Rename2.git
+[submodule "bundle/vim-indent-object"]
+	path = bundle/vim-indent-object
+	url = git://github.com/michaeljsmith/vim-indent-object.git
+[submodule "bundle/vim-buffergator"]
+	path = bundle/vim-buffergator
+	url = git://github.com/jeetsukumaran/vim-buffergator.git
