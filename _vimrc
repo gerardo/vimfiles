@@ -22,10 +22,10 @@ set background=dark
 let g:solarized_termcolors=16
 let g:solarized_visibility="high"    "default value is normal
 let g:solarized_contrast="high"    "default value is normal
+let g:solarized_termtrans = 1
 colorscheme solarized
 
 let g:obviousModeInsertHi = "ctermfg=253 ctermbg=16"
-set t_Co=256
 
 " mapleader
 let mapleader = ","
@@ -37,6 +37,8 @@ set ttyfast
 "allow backspacing over everything in insert mode
 set backspace=indent,eol,start
 set modeline
+
+set nowrap
 
 set expandtab
 set textwidth=79
@@ -78,11 +80,8 @@ set report=0 "Notify me whenever any lines have changed
 set confirm
 
 set laststatus=2
-set cursorline
-set cursorcolumn
 set number
 hi LineNr ctermfg=blue guifg=blue
-set colorcolumn=80
 
 """ Informational status line
 set statusline=%F%m%r%h%w\ [%{&ff}]\ [%Y]\ [pos=%04l,%04v][%p%%][lns=%L]\ %{fugitive#statusline()}
@@ -93,7 +92,6 @@ set statusline+=%*
 
 " Powerline
 let g:Powerline_symbols = 'fancy'
-
 
 " Show invisible chars
 set list
@@ -183,15 +181,8 @@ inoremap <F1> <ESC>
 nnoremap <F1> <ESC>
 vnoremap <F1> <ESC>
 
-" YankRing
-nnoremap <silent> <F4> :YRShow<cr>
-inoremap <silent> <F4> <ESC>:YRShow<cr>
-
 "" TagBar
 nmap <F8> :TagbarToggle<CR>
-
-"" Gundo
-nnoremap <F5> :GundoToggle<CR>
 
 "" Bind NERD_Tree plugin to a <Ctrl+E,Ctrl+E>
 noremap <C-E><C-E> :NERDTree<CR>
@@ -215,15 +206,12 @@ autocmd FileType htmldjango set ft=html.htmldjango " For SnipMate
 
 """ Omnicompletion
 autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
+autocmd BufNewFile,BufRead *.scss set ft=scss.css
 autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
 autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
 autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
 autocmd FileType python set omnifunc=pythoncomplete#Complete
 autocmd FileType python.django set omnifunc=pythoncomplete#Complete
-
-" Settings for VimClojure
-let vimclojure#HighlightBuiltins=1
-let vimclojure#ParenRainbow=1
 
 " Highligting
 
@@ -242,13 +230,11 @@ au BufRead,BufNewFile Vagrantfile set filetype=ruby
 au BufNewFile,BufReadPost *.coffee setl foldmethod=indent nofoldenable
 au BufNewFile,BufReadPost *.coffee setl shiftwidth=2 expandtab
 
-" Yankring
-let g:yankring_history_dir = '~/.vim/'
-
 " Syntastic
 let g:syntastic_check_on_open=1
 let g:syntastic_enable_signs=1
 let g:syntastic_auto_loc_list=2
+let g:syntastic_python_checker_args='--ignore=W404'
 
 " Supertab
 let g:SuperTabDefaultCompletionType = "context"
@@ -259,9 +245,6 @@ map <D-F> :Ack<space>
 " CTags
 map <Leader>rt :!/usr/local/bin/ctags --extra=+f -R *<CR>
 map <C-\> :tnext<CR>
-
-" ZoomWin configuration
-map <Leader><Leader> :ZoomWin<CR>
 
 "Slime
 let g:slime_target = "tmux"
@@ -274,9 +257,6 @@ let vimclojure#DynamicHighlighting=0
 let vimclojure#ParenRainbow=1
 let vimclojure#WantNailgun = 1
 let vimclojure#NailgunClient = $HOME . "/.vim/lib/vimclojure-nailgun-client/ng"
-
-" VimRoom
-let g:vimroom_guibackground = "#002b36"
 
 " Octopress
 autocmd BufNewFile,BufRead *.markdown,*.textile setfiletype octopress
