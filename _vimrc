@@ -236,6 +236,12 @@ let g:syntastic_enable_signs=1
 let g:syntastic_auto_loc_list=2
 let g:syntastic_python_checker_args='--ignore=W404'
 
+" HTML indent
+
+let g:html_indent_inctags = "html,body,head,tbody"
+let g:html_indent_script1 = "inc"
+let g:html_indent_style1 = "inc"
+
 " Supertab
 let g:SuperTabDefaultCompletionType = "context"
 
