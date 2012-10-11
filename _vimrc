@@ -192,7 +192,7 @@ nmap <C-W>! <Plug>Kwbd
 nmap <F8> :TagbarToggle<CR>
 
 "" Bind NERD_Tree plugin to a <Ctrl+E,Ctrl+E>
-noremap <C-E><C-E> :NERDTree<CR>
+noremap <C-E><C-E> :NERDTreeToggle<CR>
 
 " Access to syntastic location-list.
 map <Leader>e :Errors<CR>
