@@ -97,3 +97,12 @@
 [submodule "bundle/vim-css-color"]
 	path = bundle/vim-css-color
 	url = git://github.com/ap/vim-css-color.git
+[submodule "bundle/gist-vim"]
+	path = bundle/gist-vim
+	url = git://github.com/mattn/gist-vim.git
+[submodule "bundle/webapi-vim"]
+	path = bundle/webapi-vim
+	url = git://github.com/mattn/webapi-vim.git
+[submodule "bundle/NrrwRgn"]
+	path = bundle/NrrwRgn
+	url = git://github.com/chrisbra/NrrwRgn.git

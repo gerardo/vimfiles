@@ -206,11 +206,14 @@ autocmd FileType htmldjango set ft=html.htmldjango " For SnipMate
 """ Omnicompletion
 autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
 autocmd BufNewFile,BufRead *.scss set ft=scss.css
-autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
+
 autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
+
 autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
 autocmd FileType python set omnifunc=pythoncomplete#Complete
 autocmd FileType python.django set omnifunc=pythoncomplete#Complete
+
+autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
 
 " Highlight JSON files as javascript
 autocmd BufRead,BufNewFile *.json set filetype=javascript
@@ -280,6 +283,11 @@ if executable('coffeetags')
         \ }
         \ }
 endif
+
+" Gist
+let g:gist_detect_filetype = 1
+let g:gist_open_browser_after_post = 1
+
 
 " LaTex support
 
