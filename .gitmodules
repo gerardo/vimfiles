@@ -7,9 +7,6 @@
 [submodule "bundle/obviousmode"]
 	path = bundle/obviousmode
 	url = https://github.com/vim-scripts/Obvious-Mode.git
-[submodule "bundle/matchit"]
-	path = bundle/matchit
-	url = https://github.com/vim-scripts/matchit.zip.git
 [submodule "bundle/vim-surround"]
 	path = bundle/vim-surround
 	url = https://github.com/tpope/vim-surround.git
