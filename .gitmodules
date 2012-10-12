@@ -63,7 +63,7 @@
 	url = https://github.com/jpalardy/vim-slime.git
 [submodule "bundle/vim-django-support"]
 	path = bundle/vim-django-support
-	url = git@github.com:gerardo/vim-django-support.git
+	url = https://github.com/gerardo/vim-django-support.git
 [submodule "bundle/vim-css3-syntax"]
 	path = bundle/vim-css3-syntax
 	url = https://github.com/hail2u/vim-css3-syntax.git
