@@ -54,7 +54,6 @@ set showmode
 set showcmd
 set hidden
 set cursorline
-set laststatus=2
 set showfulltag
 set autoread
 set title
@@ -64,6 +63,7 @@ set ruler
 set pastetoggle=<F2>
 set splitbelow
 set title
+set noshowmode
 
 " We're not in the 70's anymore
 set nobackup
@@ -82,15 +82,8 @@ set laststatus=2
 set number
 hi LineNr ctermfg=blue guifg=blue
 
-""" Informational status line
-set statusline=%F%m%r%h%w\ [%{&ff}]\ [%Y]\ [pos=%04l,%04v][%p%%][lns=%L]\ %{fugitive#statusline()}
-" Syntastic on status line
-set statusline+=%#warningmsg#
-set statusline+=%{SyntasticStatuslineFlag()}
-set statusline+=%*
-
 " Powerline
-let g:Powerline_symbols = 'fancy'
+set rtp+=~/.vim/bundle/powerline/powerline/bindings/vim
 
 " Show invisible chars
 set list
@@ -210,23 +203,23 @@ autocmd BufWritePre * :%s/\s\+$//e
 
 """ Filetypes
 autocmd FileType python set efm=%C\ %.%#,%A\ \ File\ \"%f\"\\,\ line\ %l%.%#,%Z%[%^\ ]%\\@=%m
-autocmd FileType python set ft=python.django " For SnipMate
-autocmd FileType html set ft=html.htmldjango " For SnipMate
-autocmd FileType htmldjango set ft=html.htmldjango " For SnipMate
+autocmd FileType htmldjango set ft=html
 
 """ Omnicompletion
 autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
+autocmd FileType css set omnifunc=csscomplete#CompleteCSS
 autocmd BufNewFile,BufRead *.scss set ft=scss.css
 
 autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
+autocmd FileType javascript set omnifunc=javascriptcomplete#CompleteJS
 autocmd BufRead,BufNewFile *.json set filetype=javascript
 autocmd BufRead,BufNewFile *.jst set filetype=html.htmldjango
 
 autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
 autocmd FileType python set omnifunc=pythoncomplete#Complete
-autocmd FileType python.django set omnifunc=pythoncomplete#Complete
 
 autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
+autocmd FileType html,markdown set omnifunc=htmlcomplete#CompleteTags
 
 au BufNewFile,BufReadPost *.coffee setl foldmethod=indent nofoldenable
 au BufNewFile,BufReadPost *.coffee setl shiftwidth=2 expandtab
@@ -248,9 +241,6 @@ let g:syntastic_enable_highlighting = 0
 let g:html_indent_inctags = "html,body,head,tbody"
 let g:html_indent_script1 = "inc"
 let g:html_indent_style1 = "inc"
-
-" Supertab
-let g:SuperTabDefaultCompletionType = "context"
 
 "Slime
 let g:slime_target = "tmux"
@@ -281,9 +271,15 @@ if executable('coffeetags')
         \ }
 endif
 
-" Gist
-let g:gist_detect_filetype = 1
-let g:gist_open_browser_after_post = 1
+" MatchTagAlways
+let g:mta_filetypes = {
+    \ 'html' : 1,
+    \ 'xhtml' : 1,
+    \ 'xml' : 1,
+    \ 'jinja' : 1,
+    \ 'htmldjango' : 1,
+    \ 'html.htmldjango' : 1,
+    \}
 
 " LaTex support
 
@@ -316,6 +312,21 @@ if has("unix")
      let g:Tex_ViewRule_pdf = 'open -a Preview'
   endif
 endif
+
+" YCM
+let g:ycm_key_invoke_completion = ''
+
+" Ultisnips
+let g:UltiSnips = {}
+let g:UltiSnips.snipmate_ft_filter = {
+            \ 'default' : {'filetypes': ["FILETYPE"] },
+            \ 'html'    : {'filetypes': ["html", "htmldjango", "javascript"] },
+            \ 'python'    : {'filetypes': ["python", "django"] },
+            \ }
+
+let g:UltiSnipsExpandTrigger="<C-e>j"
+let g:UltiSnipsJumpForwardTrigger="<C-e>j"
+let g:UltiSnipsJumpBackwardTrigger="<C-e>k"
 
 " Machine-local vim settings.
 silent! source ~/.vimrc.local
