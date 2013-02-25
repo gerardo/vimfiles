@@ -6,3 +6,4 @@ yankring_history_v2.txt
 undofiles/*
 projects/*
 plugin/*
+update-plugins.sh
