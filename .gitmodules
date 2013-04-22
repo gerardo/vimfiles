@@ -118,6 +118,6 @@
 [submodule "bundle/tlib_vim"]
 	path = bundle/tlib_vim
 	url = git://github.com/tomtom/tlib_vim.git
-[submodule "bundle/vim-latex"]
-	path = bundle/vim-latex
+[submodule "bundle/latex"]
+	path = bundle/latex
 	url = git://github.com/jcf/vim-latex.git
