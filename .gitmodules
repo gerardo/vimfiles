@@ -31,9 +31,6 @@
 [submodule "bundle/html5.vim"]
 	path = bundle/html5.vim
 	url = https://github.com/othree/html5.vim.git
-[submodule "bundle/vim-latex"]
-	path = bundle/vim-latex
-	url = https://github.com/jcf/vim-latex.git
 [submodule "bundle/vim-octopress"]
 	path = bundle/vim-octopress
 	url = https://github.com/tangledhelix/vim-octopress.git
@@ -121,3 +118,6 @@
 [submodule "bundle/tlib_vim"]
 	path = bundle/tlib_vim
 	url = git://github.com/tomtom/tlib_vim.git
+[submodule "bundle/vim-latex"]
+	path = bundle/vim-latex
+	url = git://github.com/jcf/vim-latex.git
