@@ -7,3 +7,4 @@ undofiles/*
 projects/*
 plugin/*
 update-plugins.sh
+bundle/
