@@ -2,16 +2,72 @@
 ""
 "" Gerardo Curiel <gerardo@gerardo.cc>
 
-" remove compatibility with vi
-set nocompatible
+"NeoBundle Scripts-----------------------------
+if has('vim_starting')
+  if &compatible
+    set nocompatible
+  endif
 
-" activate pathogen module manage
-filetype off
-call pathogen#infect()
+  " Required:
+  set runtimepath+=~/.vim/bundle/neobundle.vim/
+endif
+
+" Required:
+call neobundle#begin(expand('~/.vim/bundle'))
+
+" Let NeoBundle manage NeoBundle
+NeoBundleFetch 'Shougo/neobundle.vim'
+
+" Add or remove your Bundles here:
+
+NeoBundle 'altercation/vim-colors-solarized'
+NeoBundle 'bling/vim-airline'
+NeoBundle 'edkolev/tmuxline.vim'
+NeoBundle 'airblade/vim-gitgutter'
+NeoBundle 'bling/vim-bufferline'
+NeoBundle 'jmcantrell/vim-virtualenv'
+NeoBundle 'tpope/vim-fugitive'
+
+NeoBundle 'scrooloose/nerdtree'
+NeoBundle 'scrooloose/nerdcommenter'
+NeoBundle 'mileszs/ack.vim'
+NeoBundle 'tpope/vim-surround'
+NeoBundle 'chrisbra/NrrwRgn'
+NeoBundle 'Lokaltog/vim-easymotion'
+NeoBundle 'michaeljsmith/vim-indent-object'
+NeoBundle 'Valloric/MatchTagAlways'
+NeoBundle 'Raimondi/delimitMate'
+
+NeoBundle 'scrooloose/syntastic'
+NeoBundle 'othree/html5.vim'
+NeoBundle 'ap/vim-css-color'
+NeoBundle 'tpope/vim-haml'
+NeoBundle 'pangloss/vim-javascript'
+NeoBundle 'kchmck/vim-coffee-script'
+NeoBundle 'tpope/vim-git'
+
+NeoBundle 'ctrlpvim/ctrlp.vim'
+NeoBundle 'SirVer/ultisnips'
+NeoBundle 'honza/vim-snippets'
+NeoBundle 'Valloric/YouCompleteMe', {
+     \ 'build'      : {
+        \ 'mac'     : './install.sh --clang-completer --system-libclang --omnisharp-completer',
+        \ 'unix'    : './install.sh --clang-completer --system-libclang --omnisharp-completer',
+        \ 'windows' : './install.sh --clang-completer --system-libclang --omnisharp-completer',
+        \ 'cygwin'  : './install.sh --clang-completer --system-libclang --omnisharp-completer'
+        \ }
+     \ }
+NeoBundle 'lambdalisue/vim-django-support'
+NeoBundle 'airblade/vim-rooter'
+
+call neobundle#end()
 
 filetype on
 filetype plugin on
 filetype plugin indent on
+
+NeoBundleCheck
+"End NeoBundle Scripts-------------------------
 
 """ display
 " syntax
@@ -81,9 +137,6 @@ set confirm
 set laststatus=2
 set number
 hi LineNr ctermfg=blue guifg=blue
-
-" Powerline
-set rtp+=~/.vim/bundle/powerline/powerline/bindings/vim
 
 " Show invisible chars
 set list
@@ -178,19 +231,13 @@ inoremap <expr> <C-Space> pumvisible() \|\| &omnifunc == '' ?
 \ "\" \\<lt>bs>\\<lt>C-n>\"\<CR>"
 imap <C-@> <C-Space>
 
-" Kwbd
-nmap <C-W>! <Plug>Kwbd
-
-"" TagBar
-nmap <F8> :TagbarToggle<CR>
-
 "" Bind NERD_Tree plugin to a <Ctrl+E,Ctrl+E>
 noremap <C-E><C-E> :NERDTreeToggle<CR>
 
 " Access to syntastic location-list.
 map <Leader>e :Errors<CR>
 
-"" Command-Shift-F for Ack
+"" Command-Shift-F for Ack/Ag
 map <D-F> :Ack<space>
 
 " CTags
@@ -230,46 +277,25 @@ autocmd BufNewFile,BufRead *.markdown,*.textile setfiletype octopress
 
 """ Plugins configuration
 
+" The Silver Searcher
+if executable('ag')
+  let g:ackprg = 'ag --vimgrep'
+endif
+
 " Syntastic
+let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_enable_signs=1
 let g:syntastic_auto_loc_list=2
 let g:syntastic_python_checker_args='--ignore=W404'
 let g:syntastic_enable_balloons = 0
 let g:syntastic_enable_highlighting = 0
+let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_wq = 0
 
 " HTML indent
 let g:html_indent_inctags = "html,body,head,tbody"
 let g:html_indent_script1 = "inc"
 let g:html_indent_style1 = "inc"
-
-"Slime
-let g:slime_target = "tmux"
-
-" VimClojure
-let vimclojure#FuzzyIndent=1
-let vimclojure#HighlightBuiltins=1
-let vimclojure#HighlightContrib=1
-let vimclojure#DynamicHighlighting=0
-let vimclojure#ParenRainbow=1
-let vimclojure#WantNailgun = 1
-let vimclojure#NailgunClient = $HOME . "/.vim/lib/vimclojure-nailgun-client/ng"
-
-" TagBar
-if executable('coffeetags')
-  let g:tagbar_type_coffee = {
-        \ 'ctagsbin' : 'coffeetags',
-        \ 'ctagsargs' : '--include-vars',
-        \ 'kinds' : [
-        \ 'f:functions',
-        \ 'o:object',
-        \ ],
-        \ 'sro' : ".",
-        \ 'kind2scope' : {
-        \ 'f' : 'object',
-        \ 'o' : 'object',
-        \ }
-        \ }
-endif
 
 " MatchTagAlways
 let g:mta_filetypes = {
@@ -280,38 +306,6 @@ let g:mta_filetypes = {
     \ 'htmldjango' : 1,
     \ 'html.htmldjango' : 1,
     \}
-
-" LaTex support
-
-" VIM LaTeX specific configurations for Mac OS X
-filetype plugin on
-set grepprg=grep\ -nH\ $*
-let g:tex_flavor='latex'
-let g:Tex_DefaultTargetFormat = 'pdf'
-let g:Tex_CompileRule_dvi = 'latex --interaction=nonstopmode $*'
-let g:Tex_CompileRule_ps = 'dvips -Pwww -o $*.ps $*.dvi'
-let g:Tex_CompileRule_ps = 'dvips -Ppdf -o $*.ps $*.dvi'
-let g:Tex_CompileRule_pspdf = 'ps2pdf $*.ps'
-let g:Tex_CompileRule_dvipdf = 'dvipdfm $*.dvi'
-let g:Tex_CompileRule_pdf = 'pdflatex -synctex=1 --interaction=nonstopmode $*'
-let g:Tex_FormatDependency_ps  = 'dvi,ps'
-let g:Tex_FormatDependency_pspdf = 'dvi,ps,pspdf'
-let g:Tex_FormatDependency_dvipdf = 'dvi,dvipdf'
-
-if has("unix")
-  let s:uname = system("echo -n \"$(uname)\"")
-  if !v:shell_error && s:uname == "Linux"
-     " Linux-specific settings
-     let g:Tex_ViewRule_dvi = 'xdg-open'
-     let g:Tex_ViewRule_ps = 'xdg-open'
-     let g:Tex_ViewRule_pdf = 'xdg-open'
-  else
-    " OSX-specific settings
-     let g:Tex_ViewRule_dvi = 'Skim'
-     let g:Tex_ViewRule_ps = 'Preview'
-     let g:Tex_ViewRule_pdf = 'open -a Preview'
-  endif
-endif
 
 " YCM
 let g:ycm_key_invoke_completion = ''
