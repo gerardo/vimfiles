@@ -17,7 +17,9 @@ $ ln -s ~/.vim/_vimrc ~/.vimrc
 $ ln -s ~/.vim/_gvimrc ~/.gvimrc
 ```
 
-Switch to the `~/.vim` directory, and fetch submodules:
+Switch to the `~/.vim` directory, and fetch submodules (mostly just [Neobundle] ):
+
+[Neobundle]: https://github.com/Shougo/neobundle.vim
 
 ```bash
 $ cd ~/.vim
@@ -29,17 +31,16 @@ And you're good to go!
 
 ## Updating to the latest version
 
-To update to the latest version of the vimfiles, run the following
-commands inside your `~/.vim` directory:
+To update to the latest version of the vimfiles, just run a git pull from
+your `~/.vim` directory:
 
 ```bash
-$ git pull
-$ git submodule foreach git pull origin master
+$ git pull origin master
 ```
 
 ## Pre-requisites
 
-It requires `ack`, `ctags`, `git`, and `curl` .
+It requires `the_silver_searcher`, `ctags`, `git`, and `curl` .
 The recommended way of installing them is using
 [Homebrew](http://mxcl.github.com/homebrew/) on OSX. On Linux,
 you can use your distribution's package management system.
@@ -50,7 +51,7 @@ information. If there's any missing, please open an issue.
 
 # Intro to VIM
 
-In case you've never used VIM before, here are some links worth
+In case you've never used VIM before, here are some links and info worth
 reading:
 
 * Type `vimtutor` into a shell to go through a brief interactive
@@ -70,19 +71,14 @@ The vimfiles comes with some predefined plugins and  base customizations:
 * Line numbers
 * Solarized as default colorscheme
 * Show trailing whitespace as `¬` and tabs as `▸`
-* Powerline-enabled status line
+* [Airline]-enabled status line
 * `<leader>w` opens a new horizontal split
 * `<leader>ww` opens a new vertical split
 * Remapped arrow keys to `hjkl`. Why? [Read on](http://www.catonmat.net/blog/why-vim-uses-hjkl-as-arrow-keys/)
 * `<C-W>!` invokes kwbd plugin; it closes all open buffers in the open
   windows but keeps the windows open
 
-
-## [SuperTab](http://github.com/ervandew/supertab)
-
-In insert mode, start typing something and hit `<TAB>` to tab-complete
-based on the current context (based on filetype). It works well with
-Snipmate, also included.
+[Airline]: https://github.com/bling/vim-airline
 
 ## [NERDCommenter](http://github.com/scrooloose/nerdcommenter)
 
@@ -100,7 +96,7 @@ functionality to your vim projects.  You can learn more about it with
 Ack.vim uses ack to search inside the current directory for a pattern.
 You can learn more about it with :help Ack.
 
-## [CtrlP](https://github.com/kien/ctrlp.vim)
+## [CtrlP](https://github.com/ctrlpvim/ctrlp.vim)
 
 Fuzzy file, buffer and mru finder.
 
@@ -109,11 +105,6 @@ Fuzzy file, buffer and mru finder.
 Syntastic is a syntax checking plugin that runs buffers through external syntax
 checkers as they are saved and opened. You will need to install the required
 syntax checkers.
-
-## [Tagbar](https://github.com/majutsushi/tagbar)
-
-Tagbar is a vim plugin for browsing the tags of source code files.
-Use `F8` to toggle Tagbar.
 
 ## [EasyMotion](https://github.com/Lokaltog/vim-easymotion)
 
@@ -137,11 +128,6 @@ that part. When you are finished, simply write that buffer (e.g. by
 |:w|) and your modifications will be put in the original buffer making
 it accessible again.
 
-## [ZoomWin](http://github.com/vim-scripts/ZoomWin)
-
-When working with split windows, ZoomWin lets you zoom into a window and
-out again using `Ctrl-W o`
-
 ## [Fugitive](http://github.com/tpope/vim-fugitive)
 
 Fugitive adds pervasive git support to git directories in vim. For more
@@ -155,7 +141,7 @@ Use `:Gdiff` on an open file to see what changes have been made to that
 file
 
 
-There are [more plugins included](https://github.com/gerardo/vimfiles/tree/master/bundle).
+There are [more plugins included](https://github.com/gerardo/vimfiles/tree/master/_vimrc).
 Check its homepages for more information.
 
 ## Feedback
