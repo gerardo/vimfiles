@@ -277,6 +277,9 @@ autocmd BufNewFile,BufRead *.markdown,*.textile setfiletype octopress
 
 """ Plugins configuration
 
+"Airline
+let g:airline_powerline_fonts = 1
+
 " The Silver Searcher
 if executable('ag')
   let g:ackprg = 'ag --vimgrep'
