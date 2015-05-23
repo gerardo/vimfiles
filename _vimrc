@@ -19,7 +19,6 @@ call neobundle#begin(expand('~/.vim/bundle'))
 NeoBundleFetch 'Shougo/neobundle.vim'
 
 " Add or remove your Bundles here:
-
 NeoBundle 'altercation/vim-colors-solarized'
 NeoBundle 'bling/vim-airline'
 NeoBundle 'edkolev/tmuxline.vim'
@@ -37,6 +36,8 @@ NeoBundle 'Lokaltog/vim-easymotion'
 NeoBundle 'michaeljsmith/vim-indent-object'
 NeoBundle 'Valloric/MatchTagAlways'
 NeoBundle 'Raimondi/delimitMate'
+NeoBundle 'terryma/vim-multiple-cursors'
+NeoBundle 'ervandew/supertab'
 
 NeoBundle 'scrooloose/syntastic'
 NeoBundle 'othree/html5.vim'
