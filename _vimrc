@@ -24,7 +24,6 @@ NeoBundle 'bling/vim-airline'
 NeoBundle 'edkolev/tmuxline.vim'
 NeoBundle 'airblade/vim-gitgutter'
 NeoBundle 'bling/vim-bufferline'
-NeoBundle 'jmcantrell/vim-virtualenv'
 NeoBundle 'tpope/vim-fugitive'
 
 NeoBundle 'scrooloose/nerdtree'
@@ -34,7 +33,6 @@ NeoBundle 'tpope/vim-surround'
 NeoBundle 'chrisbra/NrrwRgn'
 NeoBundle 'Lokaltog/vim-easymotion'
 NeoBundle 'michaeljsmith/vim-indent-object'
-NeoBundle 'Valloric/MatchTagAlways'
 NeoBundle 'Raimondi/delimitMate'
 NeoBundle 'terryma/vim-multiple-cursors'
 NeoBundle 'ervandew/supertab'
@@ -50,14 +48,6 @@ NeoBundle 'tpope/vim-git'
 NeoBundle 'ctrlpvim/ctrlp.vim'
 NeoBundle 'SirVer/ultisnips'
 NeoBundle 'honza/vim-snippets'
-NeoBundle 'Valloric/YouCompleteMe', {
-     \ 'build'      : {
-        \ 'mac'     : './install.sh --clang-completer --system-libclang --omnisharp-completer',
-        \ 'unix'    : './install.sh --clang-completer --system-libclang --omnisharp-completer',
-        \ 'windows' : './install.sh --clang-completer --system-libclang --omnisharp-completer',
-        \ 'cygwin'  : './install.sh --clang-completer --system-libclang --omnisharp-completer'
-        \ }
-     \ }
 NeoBundle 'lambdalisue/vim-django-support'
 NeoBundle 'airblade/vim-rooter'
 
