@@ -42,13 +42,11 @@ NeoBundle 'othree/html5.vim'
 NeoBundle 'ap/vim-css-color'
 NeoBundle 'tpope/vim-haml'
 NeoBundle 'pangloss/vim-javascript'
-NeoBundle 'kchmck/vim-coffee-script'
 NeoBundle 'tpope/vim-git'
 
 NeoBundle 'ctrlpvim/ctrlp.vim'
 NeoBundle 'SirVer/ultisnips'
 NeoBundle 'honza/vim-snippets'
-NeoBundle 'lambdalisue/vim-django-support'
 NeoBundle 'airblade/vim-rooter'
 
 call neobundle#end()
