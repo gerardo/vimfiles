@@ -2,5 +2,4 @@ tags
 *~
 *.swp
 .VimballRecord
-bundle/
-!bundle/neobundle.vim
+bundles/

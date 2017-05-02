@@ -2,61 +2,68 @@
 ""
 "" Gerardo Curiel <gerardo@gerardo.cc>
 
-"NeoBundle Scripts-----------------------------
-if has('vim_starting')
-  if &compatible
-    set nocompatible
-  endif
-
-  " Required:
-  set runtimepath+=~/.vim/bundle/neobundle.vim/
+"dein Scripts-----------------------------
+if &compatible
+  set nocompatible               " Be iMproved
 endif
 
 " Required:
-call neobundle#begin(expand('~/.vim/bundle'))
+set runtimepath+=~/.dotfiles/_vim/bundles/repos/github.com/Shougo/dein.vim
 
-" Let NeoBundle manage NeoBundle
-NeoBundleFetch 'Shougo/neobundle.vim'
+" Required:
+if dein#load_state('~/.dotfiles/_vim/bundles')
+  call dein#begin('~/.dotfiles/_vim/bundles')
 
-" Add or remove your Bundles here:
-NeoBundle 'altercation/vim-colors-solarized'
-NeoBundle 'bling/vim-airline'
-NeoBundle 'edkolev/tmuxline.vim'
-NeoBundle 'airblade/vim-gitgutter'
-NeoBundle 'bling/vim-bufferline'
-NeoBundle 'tpope/vim-fugitive'
+  " Let dein manage dein
+  " Required:
+  call dein#add('~/.dotfiles/_vim/bundles/repos/github.com/Shougo/dein.vim')
 
-NeoBundle 'scrooloose/nerdtree'
-NeoBundle 'scrooloose/nerdcommenter'
-NeoBundle 'mileszs/ack.vim'
-NeoBundle 'tpope/vim-surround'
-NeoBundle 'chrisbra/NrrwRgn'
-NeoBundle 'Lokaltog/vim-easymotion'
-NeoBundle 'michaeljsmith/vim-indent-object'
-NeoBundle 'Raimondi/delimitMate'
-NeoBundle 'terryma/vim-multiple-cursors'
-NeoBundle 'ervandew/supertab'
+  " Add or remove your plugins here:
 
-NeoBundle 'scrooloose/syntastic'
-NeoBundle 'othree/html5.vim'
-NeoBundle 'ap/vim-css-color'
-NeoBundle 'tpope/vim-haml'
-NeoBundle 'pangloss/vim-javascript'
-NeoBundle 'tpope/vim-git'
+  call dein#add('altercation/vim-colors-solarized')
+  call dein#add('bling/vim-airline')
+  call dein#add('edkolev/tmuxline.vim')
+  call dein#add('airblade/vim-gitgutter')
+  call dein#add('bling/vim-bufferline')
+  call dein#add('tpope/vim-fugitive')
 
-NeoBundle 'ctrlpvim/ctrlp.vim'
-NeoBundle 'SirVer/ultisnips'
-NeoBundle 'honza/vim-snippets'
-NeoBundle 'airblade/vim-rooter'
+  call dein#add('scrooloose/nerdtree')
+  call dein#add('scrooloose/nerdcommenter')
+  call dein#add('mileszs/ack.vim')
+  call dein#add('tpope/vim-surround')
+  call dein#add('chrisbra/NrrwRgn')
+  call dein#add('Lokaltog/vim-easymotion')
+  call dein#add('michaeljsmith/vim-indent-object')
+  call dein#add('Raimondi/delimitMate')
+  call dein#add('terryma/vim-multiple-cursors')
+  call dein#add('ervandew/supertab')
 
-call neobundle#end()
+  call dein#add('scrooloose/syntastic')
+  call dein#add('othree/html5.vim')
+  call dein#add('pangloss/vim-javascript')
+  call dein#add('ap/vim-css-color')
+  call dein#add('tpope/vim-git')
 
-filetype on
-filetype plugin on
+  call dein#add('ctrlpvim/ctrlp.vim')
+  call dein#add('SirVer/ultisnips')
+  call dein#add('honza/vim-snippets')
+  call dein#add('airblade/vim-rooter')
+
+  " Required:
+  call dein#end()
+  call dein#save_state()
+endif
+
+" Required:
 filetype plugin indent on
+syntax enable
 
-NeoBundleCheck
-"End NeoBundle Scripts-------------------------
+" If you want to install not installed plugins on startup.
+"if dein#check_install()
+"  call dein#install()
+"endif
+
+"End dein Scripts-------------------------
 
 """ display
 " syntax
@@ -298,9 +305,6 @@ let g:mta_filetypes = {
     \ 'htmldjango' : 1,
     \ 'html.htmldjango' : 1,
     \}
-
-" YCM
-let g:ycm_key_invoke_completion = ''
 
 " Ultisnips
 let g:UltiSnips = {}
