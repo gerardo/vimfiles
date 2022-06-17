@@ -69,7 +69,6 @@ reading:
 The vimfiles comes with some predefined plugins and  base customizations:
 
 * Line numbers
-* Solarized as default colorscheme
 * Show trailing whitespace as `¬` and tabs as `▸`
 * [Airline]-enabled status line
 * `<leader>w` opens a new horizontal split

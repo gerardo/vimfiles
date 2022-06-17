@@ -20,7 +20,6 @@ if dein#load_state('~/.dotfiles/_vim/bundles')
 
   " Add or remove your plugins here:
 
-  call dein#add('altercation/vim-colors-solarized')
   call dein#add('bling/vim-airline')
   call dein#add('edkolev/tmuxline.vim')
   call dein#add('airblade/vim-gitgutter')
@@ -47,7 +46,6 @@ if dein#load_state('~/.dotfiles/_vim/bundles')
   call dein#add('ctrlpvim/ctrlp.vim')
   call dein#add('SirVer/ultisnips')
   call dein#add('honza/vim-snippets')
-  call dein#add('airblade/vim-rooter')
 
   " Required:
   call dein#end()
@@ -70,11 +68,6 @@ syntax enable
 syntax enable
 
 set background=dark
-let g:solarized_termcolors=16
-let g:solarized_visibility="high"    "default value is normal
-let g:solarized_contrast="high"    "default value is normal
-let g:solarized_termtrans = 1
-colorscheme solarized
 
 let g:obviousModeInsertHi = "ctermfg=253 ctermbg=16"
 

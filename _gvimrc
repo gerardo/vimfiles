@@ -9,17 +9,11 @@ set t_Co=256
 set background=dark
 
 let g:obviousModeInsertHi = "guibg=Black guifg=White"
-let g:solarized_termcolors=256    "default value is 16
-let g:solarized_contrast="high"    "default value is normal
-let g:solarized_visibility="high"    "default value is normal
-let g:solarized_diffmode="high"    "default value is normal
-let g:solarized_hitrail=1    "default value is 0
 
 if has("unix")
   let s:uname = system("echo -n \"$(uname)\"")
   if !v:shell_error && s:uname == "Linux"
      " Linux-specific settings
-     colorscheme solarized
      set guifont=Inconsolata\ Medium\ 10
      "" Sane copy-paste for gVim
      vmap <C-c> "+yi
@@ -28,7 +22,6 @@ if has("unix")
      imap <C-v> <ESC>"+pa
   else
     " OSX-specific settings
-     colorscheme solarized
      set guifont=Menlo\ Regular:h11
      " Fullscreen takes up entire screen
      set fuoptions=maxhorz,maxvert"
